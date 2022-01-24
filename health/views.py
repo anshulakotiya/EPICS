@@ -1,4 +1,6 @@
 import os
+
+from PIL import ImageFont
 from django.conf import settings
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
@@ -12,7 +14,8 @@ from .models import *
 from .forms import *
 from health_world.settings import BASE_DIR
 import random
-
+from PIL import Image
+from PIL import ImageDraw
 
 def check_mailid(email):
     if validate_email(email):
@@ -26,8 +29,18 @@ def password_generator():
     password = "".join(random.sample(s, 6))
     return password
 
+def captcha_generator():
+    s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    captcha = "".join(random.sample(s, 6))
+    return captcha
 
 def home(request):
+    captcha = captcha_generator()
+    img = Image.open(os.path.join(BASE_DIR, 'health/static/images/'+'captcha_1.jpg'))
+    I1 = ImageDraw.Draw(img)
+    myFont = ImageFont.truetype('arial.ttf', 40)
+    I1.text((50, 15), captcha, fill=(0, 0, 0), font=myFont)
+    img.save("media/captcha.jpg")
     return render(request, "home.html")
 
 

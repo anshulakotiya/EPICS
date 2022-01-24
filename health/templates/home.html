@@ -14,9 +14,9 @@
     </div>
     <input placeholder="Your Email Address" type="text" required>
     <input placeholder="Your Password" type="password" required>
-    <div>
-        <img src="{% static 'images/download.jpg' %}" style="width:75%;height:60px;">
-        <button type="button" onclick="doRefreshCaptcha();" style="width:20%;cursor: pointer;">
+    <div style="width:100%;">
+        <img src="media/captcha.jpg" style="width:70%;height:50px;" align="left">
+        <button type="button" onclick="doRefreshCaptcha();" style="width:19%;cursor: pointer;float:right;">
             <img src="{% static 'images/refresh_img.png' %}" width="100%">
         </button>
     </div>
@@ -28,5 +28,4 @@
     <button type="button" class="buttons">login</button>
     <button type="button" class="buttons" onclick="window.location.href='signup.html'">signup</button>
 </div>
-
-{% endblock %}}
+{% endblock %}
