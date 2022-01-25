@@ -5,27 +5,31 @@
     <meta charset="UTF-8">
     <title>login page 1 </title>
 </head>
+{% block script %}
+<script>
+    addEventListener("load",homePage);
+</script>
+{% endblock %}
 {% block body %}
-<div class="left"></div>
-<img class="images" src="{% static 'images/logo 1-modified.jpeg' %}" alt="logo 1">
-<div class="form-box">
-    <div class="header-text">
-        Login
+<div class="background-home w-100 h-100">
+    <img class="images" src="{% static 'images/logo 1-modified.jpeg' %}" alt="logo 1">
+    <div class="form-box">
+        <div class="header-text">
+            Login
+        </div>
+        <div><span id="loginText" class="alertText"></span></div>
+        <input class="form-input" placeholder="Your Email Address" type="text" required id="username">
+        <input class="form-input" placeholder="Your Password" type="password" required id="password">
+        <div id="captcha_frame" style="width:100%;">
+            <button type="button" onclick="refreshCaptcha();" style="width:19%;cursor: pointer;float:right;">
+                <img src="{% static 'images/refresh_img.png' %}" width="100%">
+            </button>
+        </div>
+        <div>
+            <input class="form-input" placeholder="Captcha(CAPS ONLY)" type="text" required id="captcha">
+        </div>
+        <button type="button" class="buttons" onclick="login()">login</button>
+        <button type="button" class="buttons" onclick="window.location.href='/signup/'">signup</button>
     </div>
-    <input placeholder="Your Email Address" type="text" required>
-    <input placeholder="Your Password" type="password" required>
-    <div style="width:100%;">
-        <img src="media/captcha.jpg" style="width:70%;height:50px;" align="left">
-        <button type="button" onclick="doRefreshCaptcha();" style="width:19%;cursor: pointer;float:right;">
-            <img src="{% static 'images/refresh_img.png' %}" width="100%">
-        </button>
-    </div>
-    <div>
-        <input placeholder="Captcha(CAPS ONLY)" type="text" required>
-    </div>
-    <input id="terms" type="checkbox" required>
-    <label for="terms"></label><span>Agree with <a href="#"> Terms & Conditions</a></span>
-    <button type="button" class="buttons">login</button>
-    <button type="button" class="buttons" onclick="window.location.href='signup.html'">signup</button>
 </div>
 {% endblock %}

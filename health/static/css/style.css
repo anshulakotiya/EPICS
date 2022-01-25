@@ -1,7 +1,7 @@
 body{
 	box-sizing: border-box;
  }
-body {
+.background-home{
 	font-family: sans-serif;
 	background-image: url("/static/images/doctor1.png");
 	background-size: cover;
@@ -28,8 +28,8 @@ body {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	width: 320px;
-	height: 450px;
+	width: 400px;
+	height: 550px;
 }
 .form-box:before {
 	width: 100%;
@@ -50,13 +50,13 @@ body {
 	padding-bottom: 27px;
 	text-align: center;
 }
-.form-box input {
+.form-input {
 	margin: 10px 0px;
 	border: none;
 	padding: 10px;
 	border-radius: 5px;
 	width: 100%;
-	font-size: 18px;
+	font-size: 16px;
 	font-family: sans-serif;
 }
 .form-box input[type=checkbox] {
@@ -90,7 +90,7 @@ body {
 	text-align: center;
 	line-height: 20px;
 }
-.form-box span {
+.font-12{
 	font-size: 12px;
 }
 .buttons {
@@ -107,5 +107,35 @@ body {
 span a {
 	color: #BBB;
 }
+.captchaImage{
+    width:70%;
+    height:50px;
+}
+.alertText{
+    color : red;
+    font-size : 20px;
+    font-weight : bold;
+}
 
-    
+.invalid{
+    border : 3px solid;
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-repeat: no-repeat;
+}
+.valid{
+    border : 5px solid;
+    border-color: #006400;
+    padding-right: calc(1.5em + 0.75rem);
+    background-repeat: no-repeat;
+}
+.background-signup{
+            background: url("/static/images/bg1.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+.h-100 {
+    height: 100% !important;
+}

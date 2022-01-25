@@ -17,6 +17,7 @@ import random
 from PIL import Image
 from PIL import ImageDraw
 
+
 def check_mailid(email):
     if validate_email(email):
         return True
@@ -29,19 +30,28 @@ def password_generator():
     password = "".join(random.sample(s, 6))
     return password
 
+
 def captcha_generator():
     s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     captcha = "".join(random.sample(s, 6))
     return captcha
 
+
 def home(request):
+    return render(request, "home.html")
+
+
+def home_captcha(request):
     captcha = captcha_generator()
-    img = Image.open(os.path.join(BASE_DIR, 'health/static/images/'+'captcha_1.jpg'))
+    img = Image.open(os.path.join(BASE_DIR, 'health/static/images/' + 'captcha_1.jpg'))
     I1 = ImageDraw.Draw(img)
-    myFont = ImageFont.truetype('arial.ttf', 40)
+    myFont = ImageFont.truetype("arial.ttf", size=40)
     I1.text((50, 15), captcha, fill=(0, 0, 0), font=myFont)
     img.save("media/captcha.jpg")
-    return render(request, "home.html")
+    data = {
+        'text': captcha
+    }
+    return JsonResponse(data, safe=True)
 
 
 def signup(request):
@@ -106,6 +116,7 @@ def emailGeneration(request):
                 return HttpResponse('not send')
     else:
         return HttpResponse('not valid')
+
 
 def loginpage(request):
     form = loginForm()

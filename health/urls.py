@@ -22,6 +22,7 @@ from health_world import settings
 
 urlpatterns = [
     path('', views.home),
+    path('home_captcha/', views.home_captcha),
     path('signup/', views.signup),
     path('signup2/', views.signup2),
     path('emailGeneration/', views.emailGeneration),

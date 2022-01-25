@@ -1,26 +1,43 @@
-<html lang="en">
+{% extends 'basic.html' %}
 {% load static %}
-<head>
-    <meta charset="UTF-8">
-    <title>Signup</title>
-</head>
-<body style="height:100%;">
-<script src="{% static 'js/jquery.min.js' %}"></script>
-<script src="{% static 'js/popper.js' %}"></script>
-<!--<script src="{% static 'js/my_js.js' %}"></script>-->
-<div style="width:100%;height:100%;">
-    <div style="margin-top:20%;">
-        <p align="center">
-            <b>Upload Your Card</b>
-        </p>
-        <div align="center">
-            <form action="/signup/" method="post" id="theForm" enctype="multipart/form-data">{% csrf_token %}
-                File : <input type="file" accept="image/*" name="images">
-                <input type="submit" value="next">
-            </form>
-            <hr>
+{% block title %} Signup {% endblock %}
+{% block body %}
+<div class="background-signup">
+    <div class="container h-100">
+        <div class="row w-100">
+            <div class="col-md-8 col-sm-12">
+                <p align="center">
+                    <b>Upload Your Card</b>
+                </p>
+                <div align="center">
+                    <form action="/signup/" method="post" id="theForm" enctype="multipart/form-data">{% csrf_token %}
+                        File : <input type="file" accept="image/*" name="images">
+                        <input type="submit" value="next">
+                    </form>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="image">
+<!--                    <img src="demo_id.jpg" alt="Could be portrait or landscape">-->
+                </div>
+                <div class="form">
+                    <form>
+                        Upload your card here:
+                        <input type="file" name="Upload your card here" id="fileToUpload"><br><br>
+                        <button>Submit</button>
+                    </form>
+                </div>
+                <div class="login">
+                    <ul class="list">
+                        <li><a href="">Click here to generate your card</a></li>
+                        <li><a href="">Click here to uplod your card</a></li>
+                        <li><a href="">Already have account</a></li>
+                        <li><a href="">Doctor's signup</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-</body>
-</html>
+{% endblock %}

@@ -1,3 +1,55 @@
+var my_data = ""
+function homePage(){
+    $.ajax({
+            type:'GET',
+            url:'/home_captcha/',
+            success:function(data){
+                console.log(data)
+                my_data = data
+                tag = document.createElement("img");
+                tag.src = "media/captcha.jpg"
+                tag.classList.add("captchaImage");
+                tag.setAttribute('id','captchaImage');
+                document.getElementById('captcha_frame').prepend(tag);
+            }
+        })
+}
+
+function refreshCaptcha(){
+    element = document.getElementById('captchaImage')
+    element.remove()
+    homePage()
+}
+
+function login(){
+    let login = false
+    let captcha = document.getElementById('captcha');
+    inputs = document.getElementsByClassName("form-input")
+    for (let i=0;i<inputs.length;i++){
+        console.log(inputs[i].value)
+        if(inputs[i].value!= 0){
+            inputs[i].classList.add("valid")
+            inputs[i].classList.remove("invalid")
+            login = true
+        }
+        else{
+            inputs[i].classList.remove("valid")
+            inputs[i].classList.add("invalid")
+            login =false
+        }
+    }
+    if (login==true ){
+        if (my_data.text == captcha.value ){
+            document.getElementById("loginText").innerHTML = ""
+            login =true
+        }
+        else {
+            document.getElementById("loginText").innerHTML = " * Invalid Captcha"
+            login =false
+            }
+        }
+}
+
 var timeLeft = 60;
 var timerId;
 function countdown() {
