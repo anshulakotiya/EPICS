@@ -64,11 +64,14 @@ def signup(request):
         applicant_name = str(output[6][1])
         card_number = str(output[7][1])
         card_number = card_number[18:]
+        phr_address = str(output[8][1])
+        phr_address = phr_address[13:]
         mobile_number = output[11][1]
         mobile_number = mobile_number[8:]
         gender = output[10][1]
         gender = gender[8:]
-        return render(request, "signup2.html", {'applicant_name': applicant_name, 'card_number': card_number, 'mobile_number': mobile_number, 'gender': gender})
+        return render(request, "signup2.html",
+                      {'applicant_name': applicant_name, 'card_number': card_number, 'mobile_number': mobile_number, 'gender': gender, 'phr_address': phr_address})
     else:
         return render(request, "signup.html")
 
@@ -77,13 +80,15 @@ def signup2(request):
     if request.method == "POST":
         name = request.POST.get("name")
         card_number = request.POST.get("id_number")
-        mobile_number = request.POST.get("mobile_number")
+        phr_address = request.POST.get('phr_address')
+        phone_number = request.POST.get("mobile_number")
         gender = request.POST.get("gender")
         username = request.POST.get("username")
         password = request.POST.get("password")
         password = make_password(password)
-        User(name=name, card_number=card_number, mobile_number=mobile_number, gender=gender, username=username, password=password).save()
-        return HttpResponse("User Generate successfully")
+        User(name=name, card_number=card_number, phr_address=phr_address, phone_number=phone_number, gender=gender, username=username, password=password,
+             is_user=True).save()
+        return render(request, "successful_signup.html")
     else:
         return render(request, "signup.html")
 
@@ -100,6 +105,7 @@ def emailGeneration(request):
     entered_email = request.POST.get('email')
     if check_mailid(entered_email):
         all_users = User.objects.all()
+        print(all_users)
         for single_user in all_users:
             if str(single_user.username) == entered_email:
                 return HttpResponse('not unique')

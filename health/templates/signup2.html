@@ -15,25 +15,31 @@
                 <tr>
                     <td>Card Number</td>
                     <td>
-                        <input type="text" name="id_number" readonly value="{{card_number}}">
+                        <input type="text"  class="input-220" name="id_number" readonly value="{{card_number}}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>PHR Address</td>
+                    <td>
+                        <input type="text"  class="input-220" name="phr_address" readonly value="{{phr_address}}">
                     </td>
                 </tr>
                 <tr>
                     <td>Mobile Number</td>
                     <td>
-                        <input type="number" name="mobile_number" readonly value="{{mobile_number}}">
+                        <input type="number"  class="input-220" name="mobile_number" readonly value="{{mobile_number}}">
                     </td>
                 </tr>
                 <tr>
                     <td>Gender</td>
                     <td>
-                        <input type="text" name="gender" readonly value="{{gender}}">
+                        <input type="text" name="gender"  class="input-220" readonly value="{{gender}}">
                     </td>
                 </tr>
                 <tr>
                     <td>Email id</td>
                     <td>
-                        <input type="email" name="username" id="username" onkeyup=(this.value=this.value.toLowerCase())><br>
+                        <input type="email"  class="input-220" name="username" id="username" onkeyup=(this.value=this.value.toLowerCase())><br>
                         <span id="email-text" class="red-text"></span>
                     </td>
                 </tr>
@@ -44,7 +50,7 @@
                 </tr>
                 <tr>
                     <td id="otp" hidden>
-                        <input type="text" id="my-otp" placeholder="Otp" style="width:130px;" onkeyup=(this.value=this.value.toUpperCase())>
+                        <input type="text" id="my-otp"  class="input-220" placeholder="Otp" style="width:130px;" onkeyup=(this.value=this.value.toUpperCase())>
                     </td>
                     <td id="buttons" hidden>
                         <button type="button" id="valid-btn" onclick="otpValidator()" hidden>Validate</button>
@@ -55,13 +61,13 @@
                 <tr hidden id="password">
                     <td> Password</td>
                     <td>
-                        <input type="password" name="password">
+                        <input type="password"  class="input-220" name="password">
                     </td>
                 </tr>
-                <tr hidden id="confirm-password">
+                <tr hidden id="confirm-password"  class="input-220">
                     <td> Confirm Password</td>
                     <td>
-                        <input type="password" name="confirm-password">
+                        <input  class="input-220" type="password" name="confirm-password">
                     </td>
                 </tr>
                 <tr hidden id="submit-button">
