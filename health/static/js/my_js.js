@@ -89,7 +89,7 @@ function otpGenerator(){
                 document.getElementById('buttons').hidden=false;
                 document.getElementById('valid-btn').hidden=false;
                 timerId = setInterval(countdown, 1000);
-                document.getElementById('id_username').readOnly=true;
+                document.getElementById('username').readOnly=true;
                 emailVerified = 1;
                }
         }
@@ -116,7 +116,7 @@ function otpValidator(){
                     document.getElementById('confirm-password').hidden=false;
                     document.getElementById('submit-button').hidden=false;
                     document.getElementById('resend-btn').hidden=true;
-                    document.getElementById('id_username').readOnly=true;
+                    document.getElementById('username').readOnly=true;
                 }
                 else{
                     document.getElementById('email-text').innerHTML = "wrong otp entered"
