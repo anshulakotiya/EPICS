@@ -1,6 +1,17 @@
 body{
-	box-sizing: border-box;
- }
+    box-sizing: border-box;
+    background: url("/static/images/bg1.jpg");
+    background-repeat:no-repeat;
+    background-position-x : left;
+    background-position-y : center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height :auto;
+        }
 .background-home{
 	font-family: sans-serif;
 	background-image: url("/static/images/doctor1.png");
@@ -129,15 +140,39 @@ span a {
     padding-right: calc(1.5em + 0.75rem);
     background-repeat: no-repeat;
 }
-body{
-            background: url("/static/images/bg1.jpg") no-repeat left fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            width: 100%;
-            height :auto;
-        }
+
 .h-100 {
     height: 100% !important;
+}
+.input-220{
+    width:220px;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition-duration: 0.4s;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-outline-danger:hover {
+  background-color: #f44336;
+  color: white;
 }
