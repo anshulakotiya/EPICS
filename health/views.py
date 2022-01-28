@@ -1,11 +1,11 @@
-import os
-
-from PIL import ImageFont
+from PIL import ImageFont, Image, ImageDraw
 from django.conf import settings
+from django.contrib import auth
 from django.contrib.auth.hashers import make_password
+from django.contrib.messages import error
 from django.core.mail import send_mail
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import easyocr
 from django.core.files.storage import FileSystemStorage
 from django.template import loader
@@ -14,8 +14,7 @@ from .models import *
 from .forms import *
 from health_world.settings import BASE_DIR
 import random
-from PIL import Image
-from PIL import ImageDraw
+import os
 
 
 def check_mailid(email):
@@ -38,6 +37,31 @@ def captcha_generator():
 
 
 def home(request):
+    if request.session.has_key('logged_in_as_user'):
+        return render(request, 'user.html')
+    elif request.session.has_key('logged_in_as_doctor'):
+        return render(request,'doctor.html')
+    elif request.session.has_key('logged_in_as_technical'):
+        return render(request, 'technical.html')
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_user:
+                auth.login(request, user)
+                request.session['logged_in_as_user'] = True
+                return render(request, 'user.html')
+            elif user.is_doctor:
+                auth.login(request, user)
+                request.session['logged_in_as_doctor'] = True
+                return render(request, 'doctor.html')
+            elif user.is_technical:
+                auth.login(request, user)
+                request.session['logged_in_as_technical'] = True
+                return render(request, 'technical.html')
+        else:
+            error(request, 'invalid credentials')
     return render(request, "home.html")
 
 
@@ -124,6 +148,3 @@ def emailGeneration(request):
         return HttpResponse('not valid')
 
 
-def loginpage(request):
-    form = loginForm()
-    return render(request, 'loginpage.html', {'form': form})

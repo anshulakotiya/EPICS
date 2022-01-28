@@ -27,7 +27,6 @@ urlpatterns = [
     path('signup2/', views.signup2),
     path('emailGeneration/', views.emailGeneration),
     path('emailValidation/', views.emailValidation),
-    path('login/',views.loginpage)
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

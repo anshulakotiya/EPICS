@@ -42,6 +42,7 @@ function login(){
         if (my_data.text == captcha.value ){
             document.getElementById("loginText").innerHTML = ""
             login =true
+            document.getElementById('loginForm').submit();
         }
         else {
             document.getElementById("loginText").innerHTML = " * Invalid Captcha"

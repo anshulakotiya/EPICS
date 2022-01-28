@@ -18,8 +18,9 @@
             Login
         </div>
         <div><span id="loginText" class="alertText"></span></div>
-        <input class="form-input" placeholder="Your Email Address" type="text" required id="username">
-        <input class="form-input" placeholder="Your Password" type="password" required id="password">
+        <form action="/" method="post" id="loginForm">{% csrf_token %}
+        <input class="form-input" placeholder="Your Email Address" type="text" required id="username" name="username" oninput="this.value=this.value.toLowerCase()">
+        <input class="form-input" placeholder="Your Password" type="password" required id="password" name="password">
         <div id="captcha_frame" style="width:100%;">
             <button type="button" onclick="refreshCaptcha();" style="width:19%;cursor: pointer;float:right;">
                 <img src="{% static 'images/refresh_img.png' %}" width="100%">
@@ -30,6 +31,7 @@
         </div>
         <button type="button" class="buttons" onclick="login()">login</button>
         <button type="button" class="buttons" onclick="window.location.href='/signup/'">signup</button>
+        </form>
     </div>
 </div>
 {% endblock %}
