@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.home),
     path('home_captcha/', views.home_captcha),
     path('signup/', views.signup),
+    path('signup_doctor/', views.signup_doctor),
     path('signup2/', views.signup2),
     path('emailGeneration/', views.emailGeneration),
     path('emailValidation/', views.emailValidation),

@@ -1,0 +1,25 @@
+{% extends 'basic.html' %}
+{% block body %}
+<div class="form-box2">
+    <div class="header-text">
+        signup
+    </div>
+    NAME: <input placeholder="your name " type="text"><br>
+    Email:<input placeholder="Your Email Address" type="text" required><br>
+    Password:<input placeholder="Your Password" type="password" required><br>
+    confirm password : <input placeholder="confirm password " type="text"> <input id="terms" type="checkbox" required><br>
+    licence number:<input placeholder="licence number" type="text" required><br>
+    <p> upload a photo of licence card:</p><br>
+
+    <form action="/action_page.php">
+        <input type="file" id="myFile" name="filename">
+        <input type="submit">
+    </form>
+    <a href="login page 1 .html">
+        <button>signup</button>
+    </a>
+    <label for="terms"></label><span>Agree with <a href="#"> Terms & Conditions</a></span>
+    <P></P>
+    <a href="login page 1 .html" style="color: rgb(90, 7, 7); text-decoration: none;">GO BACK</a>
+</div>
+{% endblock %}

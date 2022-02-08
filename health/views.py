@@ -148,3 +148,5 @@ def emailGeneration(request):
         return HttpResponse('not valid')
 
 
+def signup_doctor(request):
+    return render(request,'signup_doctor.html')
