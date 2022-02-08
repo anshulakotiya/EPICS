@@ -12,13 +12,7 @@ body{
     width: 100%;
     height :auto;
         }
-.background-home{
-	font-family: sans-serif;
-	background-image: url("/static/images/doctor1.png");
-	background-size: cover;
-	font-size: 14px;
-	color: #fff;
-}
+
 .images{
 	margin-left: 46.3% ;
 	margin-top: 20px ;
