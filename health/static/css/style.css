@@ -284,29 +284,43 @@ span a {
 
 /* GAJENDRA CSS */
 .navbar {
-position: relative;
-display: flex;
-flex-wrap: wrap;
-align-items: center;
-justify-content: space-between;
-padding-top: 0.5rem;
-padding-bottom: 0.5rem;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    padding-right: 1.25rem;
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-primary-rgb),var(--bs-bg-opacity))!important;
+    border-radius :20px;
 }
-.navbar-brand {
+.navbar-brand{
+     list-style :none;
+}
+.navbar-brand li{
+    float : left;
+}
+.navbar-brand a{
     padding-top: 0.3125rem;
     padding-bottom: 0.3125rem;
     margin-right: 1rem;
     font-size: 1.25rem;
     text-decoration: none;
     white-space: nowrap;
+    color : #fff;
 }
-.bg-primary {
-    --bs-bg-opacity: 1;
-    background-color: rgba(var(--bs-primary-rgb),var(--bs-bg-opacity))!important;
+.navbar-brand button{
+    border-radius: 20px;
+    color: #000000;
+    border-color: #dc3545;
 }
-.navbar-dark{
-    color: #fff;
+.navbar-brand button:hover {
+  background-color: #f44336;
+  color: white;
 }
+
 .navbar-toggler-icon {
     background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e);
 }
@@ -351,4 +365,7 @@ navbar-collapse {
 }
 p{
   margin:4%;
+}
+.container{
+    width
 }
