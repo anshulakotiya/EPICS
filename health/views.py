@@ -11,7 +11,6 @@ from django.core.files.storage import FileSystemStorage
 from django.template import loader
 from validate_email import validate_email
 from .models import *
-from .forms import *
 from health_world.settings import BASE_DIR
 import random
 import os
