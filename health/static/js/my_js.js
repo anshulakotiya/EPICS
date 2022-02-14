@@ -141,3 +141,28 @@ function matchingOfPassword(){
         document.getElementById('password_text').innerHTML = "passwords doesn't match";
         }
 }
+
+function forgotPassword(){
+    username = document.getElementById('username').value
+    $.ajax({
+        type:'POST',
+        url:'/forgot_password_otp/',
+        data:{
+            email:username,
+            csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val()
+        },
+        success:function(data){
+            if(data == "not exist"){
+                document.getElementById("forgot-text").innerHTML = "Please enter the valid email."
+            }
+            else if(data == "not send"){
+                document.getElementById("forgot-text").innerHTML = "Please try again after sometime."
+            }
+            else{
+                document.getElementById("forgot_pass_1").hidden = true;
+                document.getElementById("forgot_pass_2").hidden = false;
+                document.getElementById("email").value = username;
+            }
+        }
+    })
+}

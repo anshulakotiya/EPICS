@@ -1,15 +1,26 @@
 {% extends 'basic.html' %}
+{% load static%}
 {% block title %}Patient after login{% endblock %}
 {% block body %}
 <nav class="navbar">
     <ul class="navbar-brand">
-        <li><a href="#">Patient Page</a></li>
+        <li>Welcome , {{user.name}}</li>
     </ul>
-    <div class="navbar-brand">
-        <div class="mx-5,navbar-nav ms-auto mb-2 mb-lg-0">
-            <button class="btn" data-toggle="modal" data-target="#myModal">Change Passward</button>
-            <button class="btn" data-toggle="modal" data-target="#profileModal">Profile</button>
+    <div class="dropdown">
+        <button class="navbar-button dropbtn">
+            <img class="navbar-img" src="{% static 'images/logo 1-modified.jpeg' %}">
+            <!--            <i class="fas fa-caret-down"></i>-->
+        </button>
+        <div class="dropdown-content">
+            <a href="#">Change Password</a>
+            <a href="#">Profile</a>
+            <a href="/logout/">Logout</a>
         </div>
+    </div>
+    <!--        <div class="mx-5,navbar-nav ms-auto mb-2 mb-lg-0">-->
+    <!--            <button class="btn" data-toggle="modal" data-target="#myModal">Change Passward</button>-->
+    <!--            <button class="btn" data-toggle="modal" data-target="#profileModal">Profile</button>-->
+    <!--        </div>-->
     </div>
     <!--    <div>-->
     <!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
@@ -60,17 +71,16 @@
 <!--</div>-->
 <!-- Internal Body  -->
 <!-- Details -->
-<div class="container">
-    <p>Name-</p>
-    <p>Health Id-</p>
-    <p>Address-</p>
+<div class="container-75 font-20">
+    <p>Health Id- {{user.card_number}}</p>
+    <p>PHR Address- {{user.phr_address}}</p>
 </div>
-<!-- Document Upload  -->
-<div class="document">
-    <button type="button" class="btn btn-outline-primary btn-lg">Upload Document</button>
-</div>
-<!-- Dcoument View -->
-<div class="view">
-    <button type="button" class="btn btn-outline-primary btn-lg">View Document</button>
+<div class="container-75 h-50">
+    <div class="div-50 h-100"  align="left">
+        <button type="button" class="btn btn-outline-primary vertical-center">Upload Document</button>
+    </div>
+    <div class="div-50 h-100">
+        <button type="button" class="btn btn-outline-primary vertical-center">View Document</button>
+    </div>
 </div>
 {% endblock %}
