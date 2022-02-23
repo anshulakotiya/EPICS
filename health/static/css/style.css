@@ -166,16 +166,16 @@ span a {
 .form-box2{
 	background-color: rgba(143, 224, 229, 0.918);
 	margin: auto auto;
-	padding: 40px;
+	padding: 20px 40px;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgb(122, 209, 209);
 	position: absolute ;
 	top: 0;
 	bottom: 0;
-	left: 50%;
+	left: 0;
 	right: 0;
 	width: 450px;
-	height: 620px;
+	height: 580px;
 }
 .form-box2:before {
 
@@ -190,21 +190,6 @@ span a {
 	bottom: 0;
 	z-index: -1;
 	display: block;
-}
-.form-box2 .header-text {
-	font-size: 32px;
-	font-weight: 600;
-	padding-bottom: 30px;
-	text-align:center;
-}
-.form-box2 input {
-	margin: 2px 0px;
-	border: none;
-	padding: 5px;
-	border-radius: 10px;
-	width: 60%;
-	font-size: 18px;
-	font-family: sans-serif;
 }
 .form-box2 input[type=checkbox] {
 	display:none;
@@ -384,11 +369,6 @@ span a {
     margin-bottom : auto;
     padding-bottom:auto;
 }
-.font-20{
-    font-size:20px;
-}
-
-
 .container-g {
             height: 555px;
             float: none;

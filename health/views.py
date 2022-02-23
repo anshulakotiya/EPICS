@@ -1,6 +1,5 @@
 import os
 import random
-
 import easyocr
 from PIL import ImageFont, Image, ImageDraw
 from django.conf import settings
