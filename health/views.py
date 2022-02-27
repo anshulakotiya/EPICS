@@ -1,7 +1,6 @@
 import os
 import random
 import easyocr
-from PIL import ImageFont, Image, ImageDraw
 from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth.hashers import make_password
@@ -9,7 +8,7 @@ from django.contrib.messages import error
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.files.storage import FileSystemStorage
 from django.core.mail import send_mail
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
 from validate_email import validate_email
@@ -63,21 +62,14 @@ def home(request):
                 return render(request, 'technical.html')
         else:
             error(request, 'invalid credentials')
-    return render(request, "home.html")
+    captcha = password_generator()
+    request.session['captcha'] = captcha
+    return render(request, "home.html", {'captcha': captcha})
 
-
-def home_captcha(request):
-    captcha = captcha_generator()
-    img = Image.open(os.path.join(BASE_DIR, 'health/static/images/' + 'captcha_1.jpg'))
-    I1 = ImageDraw.Draw(img)
-    myFont = ImageFont.truetype("arial.ttf", size=40)
-    I1.text((50, 15), captcha, fill=(0, 0, 0), font=myFont)
-    img.save("media/captcha.jpg")
-    data = {
-        'text': captcha
-    }
-    return JsonResponse(data, safe=True)
-
+def refreshCaptcha(request):
+    captcha = password_generator()
+    request.session['captcha'] = captcha
+    return HttpResponse(captcha)
 
 def signup(request):
     if request.method == "POST":
@@ -192,3 +184,29 @@ def forgot_password_otp(request):
             return HttpResponse('not send')
     except ObjectDoesNotExist:
         return HttpResponse("not exist")
+
+
+def signup_doctor_ajax(request):
+    email = request.POST.get("email")
+    try:
+        users = User.objects.get(username=email)
+        return HttpResponse("already exist")
+    except ObjectDoesNotExist:
+        otp = password_generator()
+        request.session['doctor_signup_otp'] = otp
+        html_message = loader.render_to_string('emails/otp_email.html', {'otp': otp})
+        mail = send_mail('Email Verification', '', settings.EMAIL_HOST_USER, [email],
+                         html_message=html_message,
+                         fail_silently=False)
+        if mail:
+            return HttpResponse("send")
+        else:
+            return HttpResponse('not send')
+
+
+def doctorEmailValidation(request):
+    otp = request.POST.get('otp')
+    if request.session['doctor_signup_otp'] == otp:
+        return HttpResponse('valid')
+    else:
+        return HttpResponse('not valid')

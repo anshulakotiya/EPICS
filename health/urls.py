@@ -22,12 +22,14 @@ from health_world import settings
 
 urlpatterns = [
     path('', views.home),
-    path('home_captcha/', views.home_captcha),
+    path('refreshCaptcha/', views.refreshCaptcha),
     path('signup/', views.signup),
     path('signup_doctor/', views.signup_doctor),
+    path('signup_doctor_ajax/', views.signup_doctor_ajax),
     path('signup2/', views.signup2),
     path('emailGeneration/', views.emailGeneration),
     path('emailValidation/', views.emailValidation),
+    path('doctorEmailValidation/', views.doctorEmailValidation),
     path('login/patient/',views.user_login),
     path('forgot_password/',views.forgot_password),
     path('forgot_password_otp/',views.forgot_password_otp),

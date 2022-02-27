@@ -111,8 +111,13 @@ span a {
 	color: #BBB;
 }
 .captchaImage{
-    width:70%;
+    background-image : url("/static/images/captcha_2.jpg");
+    width:80%;
     height:50px;
+    float:left;
+    text-align:center;
+    font-size:45px;
+    letter-spacing: 10px;
 }
 .alertText{
     color : red;
@@ -224,17 +229,6 @@ span a {
 .form-box2 span {
 	font-size: 14px;
 }
-.form-box2 button {
-	background-color: rgb(3, 3, 3);
-	color: #fff;
-	border: none;
-	border-radius: 6px;
-	cursor: pointer;
-	width: 100%;
-	font-size: 20px;
-	padding: 9px;
-	margin: 20px 0px;
-
 .first-btn{
 		display: inline-block;
 		text-decoration: none ;
@@ -246,7 +240,7 @@ span a {
 		position: relative;
 		cursor: pointer;
 	}
-}
+
 span a {
 	color: #BBB;
 }
@@ -374,16 +368,14 @@ span a {
         }
 
         .section-1 {
-
-            width: 40%;
+            width: 50%;
             float: left;
             margin-top: 3%;
             margin-left: 10%;
         }
 
         .section-2 {
-
-            width: 40%;
+            width: 35%;
             float: right;
             margin-top: 5%;
         }
@@ -471,6 +463,12 @@ span a {
             font-size:16px;
         }
 /* margins */
+.mt-1 {
+    margin-top: 1rem;
+}
+.mt-0 {
+    margin-top: 0rem;
+}
 .mt-2 {
     margin-top: 2rem;
 }
@@ -484,6 +482,12 @@ span a {
 /* width nad height */
 .w-100{
     width:100%!important;
+}
+.w-80{
+    width:80%!important;
+}
+.w-75{
+    width:75%!important;
 }
 .h-50{
     height:50%!important;
@@ -501,6 +505,9 @@ span a {
 .font-20{
 	font-size: 20px;
 }
+.font-25{
+	font-size: 25px;
+}
 .input-220{
     width:220px;
 }
@@ -515,4 +522,13 @@ span a {
 }
 .red{
     color:red;
+}
+.white{
+    color:#ffffff;
+}
+.green{
+    color:green;
+}
+.no-decoration{
+    text-decoration : none;
 }

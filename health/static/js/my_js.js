@@ -1,29 +1,19 @@
-var my_data = ""
-function homePage(){
-    $.ajax({
-            type:'GET',
-            url:'/home_captcha/',
-            success:function(data){
-                console.log(data)
-                my_data = data
-                tag = document.createElement("img");
-                tag.src = "media/captcha.jpg"
-                tag.classList.add("captchaImage");
-                tag.setAttribute('id','captchaImage');
-                document.getElementById('captcha_frame').prepend(tag);
-            }
-        })
-}
-
 function refreshCaptcha(){
-    element = document.getElementById('captchaImage')
-    element.remove()
-    homePage()
+    image = document.getElementById('captchaImage')
+     $.ajax({
+        type:'GET',
+        url:'/refreshCaptcha/',
+        success:function(data){
+            document.getElementById('captchaImage').innerHTML = data
+            }
+    })
 }
 
 function login(){
     let login = false
-    let captcha = document.getElementById('captcha');
+    let captcha = document.getElementById('captchaImage').innerHTML;
+    let my_data = document.getElementById('captcha').value;
+    console.log(captcha)
     inputs = document.getElementsByClassName("form-input")
     for (let i=0;i<inputs.length;i++){
         console.log(inputs[i].value)
@@ -39,7 +29,7 @@ function login(){
         }
     }
     if (login==true ){
-        if (my_data.text == captcha.value ){
+        if (my_data == captcha ){
             document.getElementById("loginText").innerHTML = ""
             login =true
             document.getElementById('loginForm').submit();
@@ -164,5 +154,59 @@ function forgotPassword(){
                 document.getElementById("email").value = username;
             }
         }
+    })
+}
+//doctor Signup
+function doctorSignup(){
+    console.log("k")
+    username = document.getElementById("email").value
+    $.ajax({
+        type:'POST',
+        url:'/signup_doctor_ajax/',
+        data:{
+            email:username,
+            csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val()
+        },
+        success:function(data){
+            if(data == "already exist"){
+                document.getElementById("signup-text").innerHTML = "Entered email already exist."
+            }
+            else if(data == "send"){
+                document.getElementById("signup-text").innerHTML = ""
+                document.getElementById("email").readOnly = true;
+                document.getElementById("otp").hidden = false;
+            }
+            else{
+             document.getElementById("signup-text").innerHTML = "Please try after some time..."
+            }
+        }
+    })
+    console.log("ok")
+}
+function doctorEmailValidate(){
+    $.ajax({
+            type:'POST',
+            url:'/doctorEmailValidation/',
+            data:{
+                otp:document.getElementById('my-otp').value,
+                csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val()
+                },
+            success:function(data){
+                if (data == 'valid'){
+                    document.getElementById('email-text').innerHTML = "email is validated successfully"
+                    document.getElementById('otp').hidden=true;
+                    document.getElementById('otpGen').hidden=true;
+                    document.getElementById('buttons').hidden=true;
+                    document.getElementById('password').hidden=false;
+                    document.getElementById('confirm-password').hidden=false;
+                    document.getElementById('submit-button').hidden=false;
+                    document.getElementById('resend-btn').hidden=true;
+                    document.getElementById('username').readOnly=true;
+                }
+                else{
+                    document.getElementById('email-text').innerHTML = "wrong otp entered"
+                    document.getElementById('email-text').style.color = "red"
+                }
+            }
     })
 }
