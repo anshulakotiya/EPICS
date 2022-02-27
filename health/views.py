@@ -11,17 +11,8 @@ from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
-from validate_email import validate_email
-
 from health_world.settings import BASE_DIR
 from .models import *
-
-
-def check_mailid(email):
-    if validate_email(email):
-        return True
-    else:
-        return False
 
 
 def password_generator():
@@ -129,25 +120,22 @@ def emailValidation(request):
 
 def emailGeneration(request):
     entered_email = request.POST.get('email')
-    if check_mailid(entered_email):
-        all_users = User.objects.all()
-        print(all_users)
-        for single_user in all_users:
-            if str(single_user.username) == entered_email:
-                return HttpResponse('not unique')
-        else:
-            otp = password_generator()
-            request.session['otp'] = otp
-            html_message = loader.render_to_string('emails/otp_email.html', {'otp': otp})
-            mail = send_mail('Email Verification', '', settings.EMAIL_HOST_USER, [entered_email],
-                             html_message=html_message,
-                             fail_silently=False)
-            if mail:
-                return HttpResponse('send')
-            else:
-                return HttpResponse('not send')
+    all_users = User.objects.all()
+    print(all_users)
+    for single_user in all_users:
+        if str(single_user.username) == entered_email:
+            return HttpResponse('not unique')
     else:
-        return HttpResponse('not valid')
+        otp = password_generator()
+        request.session['otp'] = otp
+        html_message = loader.render_to_string('emails/otp_email.html', {'otp': otp})
+        mail = send_mail('Email Verification', '', settings.EMAIL_HOST_USER, [entered_email],
+                         html_message=html_message,
+                         fail_silently=False)
+        if mail:
+            return HttpResponse('send')
+        else:
+            return HttpResponse('not send')
 
 
 def user_login(request):
@@ -162,7 +150,6 @@ def signup_doctor(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
-
 
 def forgot_password(request):
     return render(request, 'forgot_password.html')
