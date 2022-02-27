@@ -1,5 +1,6 @@
 import os
 import random
+
 import easyocr
 from django.conf import settings
 from django.contrib import auth
@@ -11,6 +12,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
+
 from health_world.settings import BASE_DIR
 from .models import *
 
@@ -25,6 +27,33 @@ def captcha_generator():
     s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     captcha = "".join(random.sample(s, 6))
     return captcha
+
+
+def random_quotes():
+    quotes_list = ["Your health is an investment, not expense.", "Regular exercise keeps you healthy.", "our 'HEALTH' should be the priority always.",
+                   "One day you will get there, until then train as hard as you can.", "Let go of harmful habits that do not serve you!",
+                   "our health is your greatest gift. Never take it for granted!", "et goals ,stay focused , never give up and stay healthy!",
+                   "Genius is the one who has abundance of life and health!", "It is health that is real wealth.", "The first wealth is health.",
+                   "When you focus on your health, you awaken your creativity and ability to conceive better life.",
+                   "The best doctors: sunshine, water, prayer, rest, quality food, and exercise.", "You 'GLOW' differently when you are actually 'HEALTHY'.",
+                   "Where there is health, there is a way to everything.", "Healthy is an outfit that looks beautiful on everyone.",
+                   "Exercise changes your body,  your mind, your attitude and your mood.", "Exercise should be regarded as a tribute to the heart.",
+                   "Good things come to those who sweat.", "Take care of your body. It's the only place you have to live.", "Invest in yourself, for yourself.",
+                   "Who has health has hope and who has hope has everything.", "Your body will be around a lot longer than that expensive handbag.",
+                   "Reading is to the mind what exercise is to the body.", "A healthy outside starts from the inside.", "Health is the vital principle of bliss.",
+                   "All progress takes place outside the comfort zone.", "The groundwork for all happiness is good health.",
+                   "Exercise is king. Nutrition is queen. Put them together and you’ve got a kingdom.", "Your body is your most priceless passion!",
+                   "Health is the bridge between goals and accomplishment.", "The pain you feel today will be the strength you feel tomorrow.",
+                   " Being healthy is the foundational key to all success.", "Setting goals is the first step into turning the invisible into the visible.",
+                   "Your body is the church where Nature asks to be reverenced.", "Get comfortable with being uncomfortable!", "No pain, no gain.",
+                   "You shall gain, but you shall pay with sweat, blood.", "There’s no secret formula. I lift heavy, work hard, and aim to be the best.",
+                   "Health and motivation determines what you do.", "Don’t count the days, make the days count.", "Getting fit is all about mind over matter.",
+                   "All great achievements require time and mental fitness!", "To enjoy the glow of good health, you must exercise.",
+                   "Every champion was once a contender that refused to give up.", "Fitness is not a destination, it's a way of life.",
+                   "Wellness is a collection of paths, knowledge and action.", "Your health is your best friend .",
+                   "Don't decrease the goals instead increase your efforts.", "Every human being is the author of his own health.",
+                   "We cannot become what we want by remaining what we are!!"]
+    return random.choice(quotes_list)
 
 
 def home(request):
@@ -57,10 +86,12 @@ def home(request):
     request.session['captcha'] = captcha
     return render(request, "home.html", {'captcha': captcha})
 
+
 def refreshCaptcha(request):
     captcha = password_generator()
     request.session['captcha'] = captcha
     return HttpResponse(captcha)
+
 
 def signup(request):
     if request.method == "POST":
@@ -140,7 +171,8 @@ def emailGeneration(request):
 
 def user_login(request):
     user = request.user
-    return render(request, 'user.html', {'user_name': user})
+    quote = random_quotes()
+    return render(request, 'user.html', {'user_name': user, 'quote': quote})
 
 
 def signup_doctor(request):
@@ -150,6 +182,7 @@ def signup_doctor(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
 
 def forgot_password(request):
     return render(request, 'forgot_password.html')

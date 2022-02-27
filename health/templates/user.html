@@ -6,10 +6,12 @@
     <ul class="navbar-brand">
         <li>Welcome , {{user.name}}</li>
     </ul>
+    <span class="font-20 white">
+            <b>{{quote}}</b>
+    </span>
     <div class="dropdown">
         <button class="navbar-button dropbtn">
             <img class="navbar-img" src="{% static 'images/logo 1-modified.jpeg' %}">
-            <!--            <i class="fas fa-caret-down"></i>-->
         </button>
         <div class="dropdown-content">
             <a href="#">Change Password</a>
@@ -75,11 +77,11 @@
     <p>PHR Address- {{user.phr_address}}</p>
 </div>
 <div class="container-75 h-50">
-    <div class="div-50 h-100"  align="left">
-        <button type="button" class="btn btn-outline-primary vertical-center">Upload Document</button>
+    <div align="left" class="div-50 h-100">
+        <button class="btn btn-outline-primary vertical-center" type="button">Upload Document</button>
     </div>
     <div class="div-50 h-100">
-        <button type="button" class="btn btn-outline-primary vertical-center">View Document</button>
+        <button class="btn btn-outline-primary vertical-center" type="button">View Document</button>
     </div>
 </div>
 {% endblock %}
