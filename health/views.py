@@ -1,6 +1,5 @@
 import os
 import random
-
 import easyocr
 from django.conf import settings
 from django.contrib import auth
@@ -12,9 +11,11 @@ from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
-
 from health_world.settings import BASE_DIR
 from .models import *
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 def password_generator():
@@ -96,10 +97,10 @@ def refreshCaptcha(request):
 def signup(request):
     if request.method == "POST":
         image = request.FILES['images']
-        fs = FileSystemStorage()
-        filepathname = fs.save(image.name, image)
+        id = HealthCard.objects.create(card=image).id
+        my_image = HealthCard.objects.get(id=id).card.url
         reader = easyocr.Reader(['en'])
-        output = reader.readtext(os.path.join(BASE_DIR, 'media/' + filepathname))
+        output = reader.readtext(my_image)
         health_card = output[5][1]
         if health_card != "Health Id":
             applicant_name = str(output[6][1])
@@ -136,7 +137,7 @@ def signup2(request):
         password = make_password(password)
         User(name=name, card_number=card_number, phr_address=phr_address, phone_number=phone_number, gender=gender, username=username, password=password,
              is_user=True).save()
-        return render(request, "successful_signup.html")
+        return redirect("/")
     else:
         return render(request, "signup.html")
 

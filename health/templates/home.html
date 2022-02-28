@@ -12,7 +12,18 @@
         <div class="header-text">
             Login
         </div>
-        <div><span id="loginText" class="alertText"></span></div>
+        <div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                {% if message.tags == "error" %}
+                <li class="red font-20" style="list-style:none;"><b>{{ message }}</b></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <span id="loginText" class="alertText"></span>
+        </div>
         <form action="/" method="post" id="loginForm">{% csrf_token %}
         <input class="form-input" placeholder="Your Email Address" type="text" required id="username" name="username" oninput="this.value=this.value.toLowerCase()">
         <input class="form-input" placeholder="Your Password" type="password" required id="password" name="password">
