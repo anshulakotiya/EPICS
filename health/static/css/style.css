@@ -1,6 +1,6 @@
 body{
     box-sizing: border-box;
-    background: url("/static/images/bg1.jpg");
+    background: url("https://res.cloudinary.com/df25ncrwn/image/upload/v1646048908/media/health_world/static/images/bg1_sbshqo.jpg");
     background-repeat:no-repeat;
     background-position-x : left;
     background-position-y : center;
@@ -110,7 +110,7 @@ span a {
 	color: #BBB;
 }
 .captchaImage{
-    background-image : url("/static/images/captcha_2.jpg");
+    background-image : url("https://res.cloudinary.com/df25ncrwn/image/upload/v1646048907/media/health_world/static/images/captcha_2_skss0n.jpg");
     width:80%;
     height:50px;
     float:left;
