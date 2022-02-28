@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
-    'whitenoise.runserver_nostatic'
 ]
 
 MIDDLEWARE = [
@@ -75,8 +74,7 @@ WSGI_APPLICATION = 'health_world.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-        'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgresql-fitted-12528',
         'USER': 'nsdefndkyznmqk',
         'PASSWORD': '4b2b26ceddd04693e521be3f402c7202efe8b5222f378ce06dc6354ce0d896c9',
