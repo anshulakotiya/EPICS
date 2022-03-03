@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from cloudinary.models import CloudinaryField
+
 
 # Create your models here.
 class User(AbstractUser):
@@ -16,5 +16,12 @@ class User(AbstractUser):
     card_number = models.CharField(max_length=20, blank=True, null=True)
     phr_address = models.CharField(max_length=20, blank=True, null=True)
 
+
 class HealthCard(models.Model):
-    card = models.ImageField(upload_to='media/health_world/cards/',blank=False)
+    card = models.ImageField(upload_to='media/health_world/cards/', blank=False)
+
+
+class doctorLicence(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    licence_no = models.CharField(max_length=64)
+    licence_image = models.ImageField(upload_to='media/health_world/licence/', blank=False)

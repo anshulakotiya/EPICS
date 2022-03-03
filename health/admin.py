@@ -4,3 +4,4 @@ from django.contrib import admin
 from health.models import *
 admin.site.register(User)
 admin.site.register(HealthCard)
+admin.site.register(doctorLicence)

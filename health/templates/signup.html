@@ -18,7 +18,7 @@
             </ul>
             {% endif %}
             <form action="/signup/" enctype="multipart/form-data" id="theForm" method="post">{% csrf_token %}
-                Card : <input accept="image/*" class="image-input" name="images" required type="file">
+                Card : <input  type="file" accept="image/*" class="image-input" name="images" required >
                 <input class="btn-g" type="submit" value="Next">
             </form>
         </div>

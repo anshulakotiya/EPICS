@@ -1,4 +1,3 @@
-import os
 import random
 import easyocr
 from django.conf import settings
@@ -6,16 +5,12 @@ from django.contrib import auth
 from django.contrib.auth.hashers import make_password
 from django.contrib.messages import error
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.files.storage import FileSystemStorage
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
-from health_world.settings import BASE_DIR
+
 from .models import *
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 
 
 def password_generator():
@@ -177,6 +172,18 @@ def user_login(request):
 
 
 def signup_doctor(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        password = make_password(password)
+        name = request.POST.get('name')
+        gender = request.POST.get('gender')
+        phone_number = request.POST.get('phone_number')
+        licence_no = request.POST.get('licence_no')
+        licence_image = request.FILES['image1']
+        u_instance = User.objects.create(username=username, password=password, name=name, gender=gender, phone_number=phone_number, is_doctor=True, is_active=False)
+        doctorLicence(user_id=u_instance, licence_no=licence_no, licence_image=licence_image).save()
+        return render(request, 'doctor_after_signup.html')
     return render(request, 'signup_doctor.html')
 
 

@@ -1,16 +1,16 @@
 {% extends 'basic.html' %}
 {% block body %}
 <div class="form-box2 ">
-    <h1 align="center">
+    <h1 align="center" class="mt-0">
         Doctor Signup
     </h1>
-    <div class="vertical-center-2 w-80">
+    <div class="vertical-center-2 w-100" style="position:relative;margin-top:-1.5em;">
         <p class="font-20 red" id="signup-text"></p>
-        <form action="/signup_doctor/" method="post">{% csrf_token %}
-            <table cellpadding="0" cellspacing="0" class="font-20 w-100">
+        <form action="/signup_doctor/" method="post" enctype="multipart/form-data">{% csrf_token %}
+            <table cellpadding="0" cellspacing="0" class="font-20 w-100 mt-0">
                 <tr>
-                    <td> Email:</td>
-                    <td width="65%">
+                    <td width="39%"> Email:</td>
+                    <td width="60%">
                         <input class="form-input" id="email" name="username" placeholder="Your Email Address" required type="text">
                         <p id="email-text" class="green mt-0"></p>
                     </td>
@@ -25,43 +25,57 @@
                     </td>
                 </tr>
                 <tr class="hidden" hidden>
-                    <td> Name:</td>
+                    <td> Full Name :</td>
                     <td>
-                        <input class="form-input" name="name" placeholder="your name" type="text">
+                        <input class="form-input" name="name" required placeholder="your name" type="text">
+                    </td>
+                </tr>
+                <tr class="hidden" hidden>
+                    <td> Contact Number :</td>
+                    <td>
+                        <input class="form-input" name="phone_number" required placeholder="your name" type="tel">
+                    </td>
+                </tr>
+                <tr class="hidden" hidden >
+                    <td> Gender : </td>
+                    <td>
+                        <input type="radio" name="gender" value="male" required>Male
+                        <input type="radio" name="gender" value="female" required>Female
+                        <input type="radio" name="gender" value="other" required>Other
                     </td>
                 </tr>
                 <tr class="hidden" hidden>
                     <td> Password:</td>
                     <td>
-                        <input class="form-input" name="password" placeholder="Your Password" required type="password">
+                        <input class="form-input" type="password" name="password" placeholder="Your Password" required  autocomplete="off">
                     </td>
                 </tr>
                 <tr class="hidden" hidden>
-                    <td> confirm password :</td>
+                    <td> Confirm password :</td>
                     <td>
-                        <input class="form-input" name="confirmpasswortd" placeholder="confirm password " type="text">
+                        <input class="form-input" name="confirm_passwortd" placeholder="confirm password " type="text" autocomplete="off">
                     </td>
                 </tr>
                 <tr class="hidden" hidden>
-                    <td> licence number:</td>
-                    <td><input class="form-input" name="licence_no" placeholder="licence number" required type="text"></td>
+                    <td> Licence number:</td>
+                    <td><input class="form-input" type="text" name="licence_no" placeholder="licence number" required ></td>
                 </tr>
                 <tr class="hidden" hidden>
                     <td colspan="2">upload a photo of licence card:</td>
                 </tr>
                 <tr class="hidden" hidden>
                     <td align="center" colspan="2">
-                        <input class="form-input" id="myFile" name="filename" type="file">
+                        <input type="file"  class="image-input" id="myFile" name="image1" accept="image/*" required>
                     </td>
                 </tr>
-                <tr>
+                <tr id="otp-button">
                     <td align="center" colspan="2">
                         <button class="btn-g mt-1" onclick="doctorSignup()"> Submit</button>
                     </td>
                 </tr>
                 <tr class="hidden" hidden>
                     <td align="center" colspan="2">
-                        <button class="btn-g mt-1"> Submit</button>
+                        <input type="submit" class="btn-g mt-1" value="Submit">
                     </td>
                 </tr>
             </table>

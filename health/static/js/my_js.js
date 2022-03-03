@@ -194,14 +194,14 @@ function doctorEmailValidate(){
             success:function(data){
                 if (data == 'valid'){
                     document.getElementById('email-text').innerHTML = "email is validated successfully"
-                    document.getElementById('otp').hidden=true;
-                    document.getElementById('otpGen').hidden=true;
-                    document.getElementById('buttons').hidden=true;
-                    document.getElementById('password').hidden=false;
-                    document.getElementById('confirm-password').hidden=false;
-                    document.getElementById('submit-button').hidden=false;
-                    document.getElementById('resend-btn').hidden=true;
-                    document.getElementById('username').readOnly=true;
+                    document.getElementById("email").readOnly = true;
+                     document.getElementById("otp").hidden = true;
+                     document.getElementById("otp-button").hidden = true;
+                     document.getElementById("email-text").hidden = true;
+                    hiddenItems = document.getElementsByClassName("hidden")
+                    for (i = 0 ;i<=hiddenItems.length;i++){
+                        hiddenItems[i].hidden = false;
+                    }
                 }
                 else{
                     document.getElementById('email-text').innerHTML = "wrong otp entered"
