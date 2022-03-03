@@ -1,0 +1,22 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block body %}
+<nav class="navbar">
+    <ul class="navbar-brand">
+        <li>Welcome , {{user.name}}</li>
+    </ul>
+    <div class="dropdown">
+        <button class="navbar-button dropbtn">
+            <img class="navbar-img" src="{% static 'images/logo 1-modified.jpeg' %}">
+        </button>
+        <div class="dropdown-content">
+            <a href="#">Change Password</a>
+            <a href="#">Profile</a>
+            <a href="/logout/">Logout</a>
+        </div>
+    </div>
+</nav>
+<div>
+    ATHARV CHUTIYA HAI
+</div>
+{% endblock %}

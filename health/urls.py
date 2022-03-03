@@ -32,6 +32,7 @@ urlpatterns = [
     path('login/patient/', views.user_login),
     path('forgot_password/', views.forgot_password),
     path('forgot_password_otp/', views.forgot_password_otp),
+    path('doctors_verification/',views.doctors_verification),
     path('logout/', views.logout),
 ]
 if settings.DEBUG:

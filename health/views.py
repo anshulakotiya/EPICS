@@ -238,3 +238,6 @@ def doctorEmailValidation(request):
         return HttpResponse('valid')
     else:
         return HttpResponse('not valid')
+
+def doctors_verification(request):
+    return render(request,'doctors_verification.html')
