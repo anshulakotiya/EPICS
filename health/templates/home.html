@@ -8,7 +8,8 @@
 {% block body %}
 <div class="background-home w-100 h-100">
     <div align="center">
-        <img alt="logo 1" class="images" src="{% static 'logo.png' %}" width="100%">
+        <img alt="logo 1" class="images" src="https://res.cloudinary.com/df25ncrwn/image/upload/v1646470383/media/health_world/static/images/Logo_jxspqx.png"
+             width="100%">
     </div>
     <div class="form-box mt-1">
         <div class="header-text">
@@ -29,7 +30,7 @@
         <form action="/" id="loginForm" method="post">{% csrf_token %}
             <input class="form-input" id="username" name="username" oninput="this.value=this.value.toLowerCase()" placeholder="Your Email Address" required
                    type="text">
-            <input class="form-input" id="password" name="password" placeholder="Your Password" required type="password">
+            <input class="form-input" id="password" name="password" placeholder="Your Password" required type="password" autocomplete="off">
             <div id="captcha_frame" style="width:100%">
                 <div class="captchaImage" id="captchaImage">{{captcha}}</div>
                 <button onclick="refreshCaptcha();" style="width:15%; cursor: pointer;float:right;" type="button">

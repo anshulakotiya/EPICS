@@ -48,16 +48,16 @@ body{
         height: 420px;
         }
     .form-input {
-        margin: 4px 0px;
+        margin: 3px 0px;
         border: none;
-        padding: 8px;
+        padding: 6px;
         border-radius: 5px;
         width: 100%;
-        font-size: 16px;
+        font-size: 14px;
         font-family: sans-serif;
         }
     .form-box .header-text {
-        font-size: 30px;
+        font-size: 26px;
         font-weight: 600;
         padding-bottom: 20px;
         text-align: center;
