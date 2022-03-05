@@ -119,3 +119,11 @@
 }.yellow{
     color:yellow;
 }
+@media only screen and (max-width: 576px){
+    .font-20{
+        font-size:18px;
+    }
+    .font-25{
+        font-size:22px;
+    }
+}

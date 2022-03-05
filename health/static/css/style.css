@@ -10,7 +10,6 @@ body{
     -o-background-size: cover;
     background-size: cover;
     width: 100%;
-    height :auto;
 }
 .images{
 	width: 130px;
@@ -21,6 +20,7 @@ body{
 .form-box {
 	background-color: rgba(0, 0, 0, 0.4);
 	margin: auto auto;
+	margin-top : 2rem;
 	padding:10px 40px 40px 40px;
 	border-radius: 5px;
 	box-shadow: 0 0 10px #000;
@@ -59,34 +59,6 @@ body{
 	width: 100%;
 	font-size: 16px;
 	font-family: sans-serif;
-}
-.form-box label {
-	position: relative;
-	margin-left: 5px;
-	margin-right: 10px;
-	top: 5px;
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	cursor: pointer;
-}
-.form-box label:before {
-	content: "";
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	border-radius: 5px;
-	position: absolute;
-	left: 0;
-	bottom: 1px;
-	background-color: #ddd;
-}
-.form-box input[type=checkbox]:checked+label:before {
-	content: "\2713";
-	font-size: 16px;
-	color: #000;
-	text-align: center;
-	line-height: 20px;
 }
 .buttons {
 	background-color: deepskyblue;
@@ -429,7 +401,8 @@ span a {
     .form-box {
         background-color: rgba(0, 0, 0, 0.4);
         margin: auto auto;
-        padding:10px 30px 40px 30px;
+        margin-top : 2rem;
+        padding:10px 30px 20px 30px;
         border-radius: 5px;
         box-shadow: 0 0 8px #000;
         position: relative ;
@@ -441,12 +414,12 @@ span a {
         height: 420px;
     }
     .form-input {
-        margin: 4px 0px;
+        margin: 5px 0px;
         border: none;
-        padding: 7px;
+        padding: 8px;
         border-radius: 5px;
         width: 100%;
-        font-size: 14px;
+        font-size: 16px;
         font-family: sans-serif;
     }
     .form-box .header-text {
@@ -466,6 +439,7 @@ span a {
         height:auto;
         margin-right: auto;
         margin-left:auto;
+        margin-bottom : 50px;
     }
     .captchaImage{
         background-image : url("https://res.cloudinary.com/df25ncrwn/image/upload/v1646048907/media/health_world/static/images/captcha_2_skss0n.jpg");
@@ -491,6 +465,21 @@ span a {
         font-size: 16px;
         padding: 6px;
         margin: 10px 0px;
+    }
+    .form-box2{
+        background-color: rgb(191 234 237 / 92%);
+        margin: auto auto;
+        margin-top : 1rem;
+        padding:10px 30px 20px 30px;
+        border-radius: 5px;
+        box-shadow: 0 0 20px rgb(122, 209, 209);
+        position: relative ;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 250px;
+        height: 420px;
     }
 }
 @media (min-width:0px) and (max-width: 804px) {
