@@ -3,7 +3,7 @@
 {% block body %}
 <nav class="navbar">
     <ul class="navbar-brand">
-        <li>Welcome , {{user.name}}</li>
+        <li>Welcome , {{user.name|title}}</li>
     </ul>
     <div class="dropdown">
         <button class="navbar-button dropbtn">
@@ -18,5 +18,24 @@
 </nav>
 <div>
     ATHARV CHUTIYA HAI
+    <table width="80%" border="1" cellpadding="10" cellspacing="0" class="collapse-border" align="center">
+        <tr>
+            <td>Name</td>
+            <td>Contact Number</td>
+            <td>Image</td>
+            <td>Licence Number</td>
+            <td></td>
+        </tr>
+        {% for a in doctor_to_verify  %}
+        <tr>
+            <td>{{a.user_id.name|title}}</td>
+            <td>{{a.user_id.phone_number}}</td>
+            <td>
+                <img src="{{a.licence_image.url}}"  class="licence-image"></td>
+            <td>{{a.licence_no}}</td>
+            <td><button onclick="window.location.href=''">Verify</button></td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
 {% endblock %}

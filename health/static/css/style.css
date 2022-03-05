@@ -12,31 +12,59 @@ body{
     width: 100%;
     height :auto;
         }
-
 .images{
-	margin-left: 31.9% ;
-	margin-top: 0%;
-	width: 300px;
+	width: 130px;
 	height: auto;
 	position: relative;
 	z-index: 1;
 }
-
 .form-box {
 	background-color: rgba(0, 0, 0, 0.4);
 	margin: auto auto;
-	padding: 40px;
-	padding-top: 60px;
-	padding-bottom: 90px;
+	padding:10px 40px 40px 40px;
 	border-radius: 5px;
 	box-shadow: 0 0 10px #000;
-	position: absolute ;
+	position: relative ;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	width: 400px;
-	height: 420px;
+	height: 480px;
+}
+@media only screen and (max-width: 576px){
+    .form-box {
+        background-color: rgba(0, 0, 0, 0.4);
+        margin: auto auto;
+        padding:10px 30px 40px 30px;
+        border-radius: 5px;
+        box-shadow: 0 0 8px #000;
+        position: relative ;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 250px;
+        height: 420px;
+        }
+    .form-input {
+        margin: 4px 0px;
+        border: none;
+        padding: 8px;
+        border-radius: 5px;
+        width: 100%;
+        font-size: 16px;
+        font-family: sans-serif;
+        }
+    .form-box .header-text {
+        font-size: 30px;
+        font-weight: 600;
+        padding-bottom: 20px;
+        text-align: center;
+        }
+    .ab{
+        width : 50%;
+    }
 }
 .form-box:before {
 	width: 100%;
@@ -234,18 +262,13 @@ span a {
 		position: relative;
 		cursor: pointer;
 	}
-
 span a {
 	color: #BBB;
 }
 
-@media only screen and (max-width: 576px){
-    .ab{
-        width : 50%;
-    }
+.collapse-border{
+    border-collapse : collapse;
 }
-
-
 /* GAJENDRA CSS */
 .navbar {
     width: 98%;
@@ -360,20 +383,17 @@ span a {
             height: 555px;
             float: none;
         }
-
         .section-1 {
             width: 50%;
             float: left;
             margin-top: 3%;
             margin-left: 10%;
         }
-
         .section-2 {
             width: 35%;
             float: right;
             margin-top: 5%;
         }
-
         @media (min-width:0px) and (max-width: 804px) {
             .section-1 {
                 width: 80%;
@@ -381,7 +401,6 @@ span a {
                 margin-left: 8%;
                 float: none;
             }
-
             .section-2 {
                 width: 80%;
                 margin-top: 10%;
@@ -390,8 +409,6 @@ span a {
                 text-align: center;
             }
         }
-
-
         #heading {
             text-align: center;
             margin-bottom: 0.5rem;
@@ -400,13 +417,10 @@ span a {
             --bs-gutter-x: 1.5rem;
             --bs-gutter-y: 0;
         }
-
-
         .btn-next {
             text-align: center;
             float: right;
         }
-
         @media (min-width:0px) and (max-width: 616px) {
             .btn-next {
                 margin-top: 4%;
@@ -414,7 +428,6 @@ span a {
 
             }
         }
-
         .btn-g-1 {
             text-align: center;
             margin-top: 14%;
@@ -456,6 +469,19 @@ span a {
         .image-input{
             font-size:16px;
         }
+.demo-video{
+    width:60%;
+    height:auto;
+    margin-right: auto;
+    margin-left:auto;
+}
+.licence-image{
+    width:200px;
+    transition: transform .5s;
+}
+.licence-image:hover{
+    transform: scale(4);
+}
 /* margins */
 .mt-1 {
     margin-top: 1rem;

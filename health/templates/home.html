@@ -7,8 +7,10 @@
 </head>
 {% block body %}
 <div class="background-home w-100 h-100">
-    <img class="images" src="{% static 'logo.png' %}" alt="logo 1" width="100%">
-    <div class="form-box">
+    <div align="center">
+        <img alt="logo 1" class="images" src="{% static 'logo.png' %}" width="100%">
+    </div>
+    <div class="form-box mt-1">
         <div class="header-text">
             Login
         </div>
@@ -22,23 +24,24 @@
                 {% endfor %}
             </ul>
             {% endif %}
-            <span id="loginText" class="alertText"></span>
+            <span class="alertText" id="loginText"></span>
         </div>
-        <form action="/" method="post" id="loginForm">{% csrf_token %}
-        <input class="form-input" placeholder="Your Email Address" type="text" required id="username" name="username" oninput="this.value=this.value.toLowerCase()">
-        <input class="form-input" placeholder="Your Password" type="password" required id="password" name="password">
-        <div id="captcha_frame" style="width:100%">
-            <div class="captchaImage" id="captchaImage" >{{captcha}}</div>
-            <button type="button" onclick="refreshCaptcha();" style="width:15%; cursor: pointer;float:right;">
-                <img src="https://res.cloudinary.com/df25ncrwn/image/upload/v1646048908/media/health_world/static/images/refresh_img_dziae1.jpg" width="100%">
-            </button>
-        </div>
-        <div>
-            <input class="form-input" placeholder="Captcha(CAPS ONLY)" type="text" required id="captcha">
-        </div>
-        <button type="button" class="buttons font-20" onclick="login()">Login</button>
+        <form action="/" id="loginForm" method="post">{% csrf_token %}
+            <input class="form-input" id="username" name="username" oninput="this.value=this.value.toLowerCase()" placeholder="Your Email Address" required
+                   type="text">
+            <input class="form-input" id="password" name="password" placeholder="Your Password" required type="password">
+            <div id="captcha_frame" style="width:100%">
+                <div class="captchaImage" id="captchaImage">{{captcha}}</div>
+                <button onclick="refreshCaptcha();" style="width:15%; cursor: pointer;float:right;" type="button">
+                    <img src="https://res.cloudinary.com/df25ncrwn/image/upload/v1646048908/media/health_world/static/images/refresh_img_dziae1.jpg" width="100%">
+                </button>
+            </div>
+            <div>
+                <input class="form-input" id="captcha" placeholder="Captcha(CAPS ONLY)" required type="text">
+            </div>
+            <button class="buttons font-20" onclick="login()" type="button">Login</button>
             <a class="font-25 white no-decoration" href="/forgot_password/"> Forgot Password</a>
-        <button type="button" class="buttons font-20" onclick="window.location.href='/signup/'">Signup</button>
+            <button class="buttons font-20" onclick="window.location.href='/signup/'" type="button">Signup</button>
         </form>
     </div>
 </div>

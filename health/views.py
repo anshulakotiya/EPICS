@@ -1,4 +1,5 @@
 import random
+
 import easyocr
 from django.conf import settings
 from django.contrib import auth
@@ -239,5 +240,7 @@ def doctorEmailValidation(request):
     else:
         return HttpResponse('not valid')
 
+
 def doctors_verification(request):
-    return render(request,'doctors_verification.html')
+    doctor_to_verify = doctorLicence.objects.filter(user_id__is_active=False,user_id__is_doctor=True)
+    return render(request, 'doctors_verification.html', {'doctor_to_verify': doctor_to_verify})
