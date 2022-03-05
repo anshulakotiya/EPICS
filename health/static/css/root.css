@@ -51,3 +51,71 @@
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
 }
+/* margins */
+.mt-1 {
+    margin-top: 1rem;
+}
+.mt-0 {
+    margin-top: 0rem;
+}
+.mt-2 {
+    margin-top: 2rem;
+}
+.mt-3 {
+    margin-top: 3rem;
+}
+.mt-5 {
+    margin-top: 5rem;
+}
+/* width nad height */
+.w-100{
+    width:100%!important;
+}
+.w-80{
+    width:80%!important;
+}
+.w-75{
+    width:75%!important;
+}
+.w-60{
+    width:60%!important;
+}
+.h-50{
+    height:50%!important;
+}
+.h-100 {
+    height: 100% !important;
+}
+/* fonts */
+.font-12{
+	font-size: 12px;
+}
+.font-16{
+	font-size: 16px;
+}
+.font-20{
+	font-size: 20px;
+}
+.font-22{
+	font-size: 22px;
+}
+.font-25{
+	font-size: 25px;
+}
+.input-220{
+    width:220px;
+}
+.input-300{
+    width:300px;
+}
+.red{
+    color:red;
+}
+.white{
+    color:#ffffff;
+}
+.green{
+    color:green;
+}.yellow{
+    color:yellow;
+}

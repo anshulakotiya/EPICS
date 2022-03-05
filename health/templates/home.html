@@ -33,16 +33,16 @@
             <input class="form-input" id="password" name="password" placeholder="Your Password" required type="password" autocomplete="off">
             <div id="captcha_frame" style="width:100%">
                 <div class="captchaImage" id="captchaImage">{{captcha}}</div>
-                <button onclick="refreshCaptcha();" style="width:15%; cursor: pointer;float:right;" type="button">
+                <button onclick="refreshCaptcha();" class="refresh-button" type="button">
                     <img src="https://res.cloudinary.com/df25ncrwn/image/upload/v1646048908/media/health_world/static/images/refresh_img_dziae1.jpg" width="100%">
                 </button>
             </div>
             <div>
                 <input class="form-input" id="captcha" placeholder="Captcha(CAPS ONLY)" required type="text">
             </div>
-            <button class="buttons font-20" onclick="login()" type="button">Login</button>
+            <button class="buttons " onclick="login()" type="button">Login</button>
             <a class="font-25 white no-decoration" href="/forgot_password/"> Forgot Password</a>
-            <button class="buttons font-20" onclick="window.location.href='/signup/'" type="button">Signup</button>
+            <button class="buttons " onclick="window.location.href='/signup/'" type="button">Signup</button>
         </form>
     </div>
 </div>
