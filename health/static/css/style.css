@@ -10,6 +10,7 @@ body{
     -o-background-size: cover;
     background-size: cover;
     width: 100%;
+    margin : 0px;
 }
 .images{
 	width: 130px;
@@ -480,6 +481,9 @@ span a {
         right: 0;
         width: 250px;
         height: 420px;
+    }
+    .image-input{
+        width : 60%;
     }
 }
 @media (min-width:0px) and (max-width: 804px) {

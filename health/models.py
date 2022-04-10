@@ -25,3 +25,7 @@ class doctorLicence(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     licence_no = models.CharField(max_length=64)
     licence_image = models.ImageField(upload_to='media/health_world/licence/', blank=False)
+
+class userDocuments(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+

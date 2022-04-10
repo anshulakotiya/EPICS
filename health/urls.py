@@ -30,6 +30,7 @@ urlpatterns = [
     path('emailValidation/', views.emailValidation),
     path('doctorEmailValidation/', views.doctorEmailValidation),
     path('login/patient/', views.user_login),
+    path('login/patient/upload_document/', views.upload_document),
     path('forgot_password/', views.forgot_password),
     path('forgot_password_otp/', views.forgot_password_otp),
     path('doctors_verification/',views.doctors_verification),

@@ -11,7 +11,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from .models import *
+from .forms import *
 
 
 def password_generator():
@@ -242,5 +242,10 @@ def doctorEmailValidation(request):
 
 
 def doctors_verification(request):
-    doctor_to_verify = doctorLicence.objects.filter(user_id__is_active=False,user_id__is_doctor=True)
+    doctor_to_verify = doctorLicence.objects.filter(user_id__is_active=False, user_id__is_doctor=True)
     return render(request, 'doctors_verification.html', {'doctor_to_verify': doctor_to_verify})
+
+
+def upload_document(request):
+    form = uploadDocumentForm()
+    return render(request, 'upload_document.html', {'form': form})
