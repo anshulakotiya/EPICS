@@ -247,5 +247,13 @@ def doctors_verification(request):
 
 
 def upload_document(request):
-    form = uploadDocumentForm()
-    return render(request, 'upload_document.html', {'form': form})
+    if request.method == "POST":
+        my_form = uploadDocumentForm(request.POST)
+        if my_form.is_valid():
+            my_form.save()
+            return render(request, 'upload_document.html',{'form': my_form})
+        else:
+            print(my_form.errors)
+    else:
+        form = uploadDocumentForm()
+        return render(request, 'upload_document.html', {'form': form})

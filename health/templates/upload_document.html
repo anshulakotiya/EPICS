@@ -1,4 +1,10 @@
 {% extends 'basic.html' %}
 {% block body %}
-  {{form}}
+<form action="/login/patient/upload_document/" method="post"> {% csrf_token %}
+      <div class="form-box">
+          Decease Name : {{form.decease_name}}
+          Decease Description : {{form.description}}
+      </div>
+  <input type="submit">
+</form>
 {% endblock %}

@@ -26,6 +26,13 @@ class doctorLicence(models.Model):
     licence_no = models.CharField(max_length=64)
     licence_image = models.ImageField(upload_to='media/health_world/licence/', blank=False)
 
-class userDocuments(models.Model):
+
+class UserDecease(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    decease_name = models.CharField(max_length=64)
+    description = models.CharField(max_length=2048)
+
+class Documents(models.Model):
+    userDoc = models.ForeignKey(UserDecease,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='media/health_world/documents/', blank=False)
 

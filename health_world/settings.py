@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+
 import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -77,17 +78,17 @@ WSGI_APPLICATION = 'health_world.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    #     'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'postgresql-fitted-12528',
-    #     'USER': 'nsdefndkyznmqk',
-    #     'PASSWORD': '4b2b26ceddd04693e521be3f402c7202efe8b5222f378ce06dc6354ce0d896c9',
-    #     'HOST': 'ec2-3-219-204-29.compute-1.amazonaws.com',
-    #     'PORT': '5432',
+    'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': 'postgresql-fitted-12528',
+                'USER': 'nsdefndkyznmqk',
+                'PASSWORD': '4b2b26ceddd04693e521be3f402c7202efe8b5222f378ce06dc6354ce0d896c9',
+                'HOST': 'ec2-3-219-204-29.compute-1.amazonaws.com',
+                'PORT': '5432',
+                }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
 }
 
 # Password validation
