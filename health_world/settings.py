@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'health_world.wsgi.application'
 
 DATABASES = {
     'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2',
-                'NAME': 'postgresql-fitted-12528',
-                'USER': 'nsdefndkyznmqk',
-                'PASSWORD': '4b2b26ceddd04693e521be3f402c7202efe8b5222f378ce06dc6354ce0d896c9',
-                'HOST': 'ec2-3-219-204-29.compute-1.amazonaws.com',
+                'NAME': 'postgresql-pointy-81272',
+                'USER': 'gmccnixqmzmmqe',
+                'PASSWORD': '13341c76d117b0fac24ec13b47f774ab613289cecb9f8390b21172415cedee38',
+                'HOST': 'ec2-34-207-12-160.compute-1.amazonaws.com',
                 'PORT': '5432',
                 }
     # 'default': {
