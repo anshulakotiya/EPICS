@@ -1,77 +1,77 @@
-{% extends 'basic.html' %}
+{% extends 'user_basic.html' %}
 {% load static%}
 {% block title %}Patient after login{% endblock %}
-{% block body %}
-<nav class="navbar">
-    <ul class="navbar-brand">
-        <li>Welcome , {{user.name}}</li>
-    </ul>
-    <span class="font-22 yellow">
-            <b>* {{quote}} *</b>
-    </span>
-    <div class="dropdown">
-        <button class="navbar-button dropbtn">
-            <img class="navbar-img" src="{% static 'icons/icon-192x192.png' %}">
-        </button>
-        <div class="dropdown-content">
-            <a href="#">Change Password</a>
-            <a href="#">Profile</a>
-            <a href="/logout/">Logout</a>
-        </div>
-    </div>
-    <!--        <div class="mx-5,navbar-nav ms-auto mb-2 mb-lg-0">-->
-    <!--            <button class="btn" data-toggle="modal" data-target="#myModal">Change Passward</button>-->
-    <!--            <button class="btn" data-toggle="modal" data-target="#profileModal">Profile</button>-->
-    <!--        </div>-->
-    <!--    <div>-->
-    <!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
-    <!--                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--            <span class="navbar-toggler-icon"></span>-->
-    <!--        </button>-->
-    <!--    </div>-->
-</nav>
-<!-- Change passward -->
-<!-- Modal -->
-<!--<div id="myModal" class="modal fade" role="dialog">-->
-<!--    <div class="modal-dialog">-->
-<!--        &lt;!&ndash; Modal content&ndash;&gt;-->
-<!--        <div class="modal-content">-->
-<!--            <div class="modal-header">-->
-<!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-<!--                <h4 class="modal-title">Modal Header</h4>-->
-<!--            </div>-->
-<!--            <div class="modal-body">-->
-<!--                <p>MOdal for change passward</p>-->
-<!--            </div>-->
-<!--            <div class="modal-footer">-->
-<!--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-<!--            </div>-->
+<!--<nav class="navbar">-->
+<!--    <ul class="navbar-brand">-->
+<!--        <li>Welcome , {{user.name}}</li>-->
+<!--    </ul>-->
+<!--    <span class="font-22 yellow">-->
+<!--            <b>* {{quote}} *</b>-->
+<!--    </span>-->
+<!--    <div class="dropdown">-->
+<!--        <button class="navbar-button dropbtn">-->
+<!--            <img class="navbar-img" src="{% static 'icons/icon-192x192.png' %}">-->
+<!--        </button>-->
+<!--        <div class="dropdown-content">-->
+<!--            <a href="#">Change Password</a>-->
+<!--            <a href="#">Profile</a>-->
+<!--            <a href="/logout/">Logout</a>-->
 <!--        </div>-->
 <!--    </div>-->
-<!--</div>-->
-<!--&lt;!&ndash; Profile &ndash;&gt;-->
+<!--    &lt;!&ndash;        <div class="mx-5,navbar-nav ms-auto mb-2 mb-lg-0">&ndash;&gt;-->
+<!--    &lt;!&ndash;            <button class="btn" data-toggle="modal" data-target="#myModal">Change Passward</button>&ndash;&gt;-->
+<!--    &lt;!&ndash;            <button class="btn" data-toggle="modal" data-target="#profileModal">Profile</button>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <div>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"&ndash;&gt;-->
+<!--    &lt;!&ndash;                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">&ndash;&gt;-->
+<!--    &lt;!&ndash;            <span class="navbar-toggler-icon"></span>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </button>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </div>&ndash;&gt;-->
+<!--</nav>-->
+<!--&lt;!&ndash; Change passward &ndash;&gt;-->
 <!--&lt;!&ndash; Modal &ndash;&gt;-->
-<!--<div id="profileModal" class="modal fade" role="dialog">-->
-<!--    <div class="modal-dialog">-->
+<!--&lt;!&ndash;<div id="myModal" class="modal fade" role="dialog">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="modal-dialog">&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash; Modal content&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="modal-content">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="modal-header">&ndash;&gt;-->
+<!--&lt;!&ndash;                <button type="button" class="close" data-dismiss="modal">&times;</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h4 class="modal-title">Modal Header</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="modal-body">&ndash;&gt;-->
+<!--&lt;!&ndash;                <p>MOdal for change passward</p>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="modal-footer">&ndash;&gt;-->
+<!--&lt;!&ndash;                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash; Profile &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash; Modal &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;<div id="profileModal" class="modal fade" role="dialog">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="modal-dialog">&ndash;&gt;-->
 
-<!--        &lt;!&ndash; Modal content&ndash;&gt;-->
-<!--        <div class="modal-content">-->
-<!--            <div class="modal-header">-->
-<!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-<!--                <h4 class="modal-title">Modal Header</h4>-->
-<!--            </div>-->
-<!--            <div class="modal-body">-->
-<!--                <p>modal foe profile</p>-->
-<!--            </div>-->
-<!--            <div class="modal-footer">-->
-<!--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-<!--            </div>-->
-<!--        </div>-->
+<!--&lt;!&ndash;        &lt;!&ndash; Modal content&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="modal-content">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="modal-header">&ndash;&gt;-->
+<!--&lt;!&ndash;                <button type="button" class="close" data-dismiss="modal">&times;</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h4 class="modal-title">Modal Header</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="modal-body">&ndash;&gt;-->
+<!--&lt;!&ndash;                <p>modal foe profile</p>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="modal-footer">&ndash;&gt;-->
+<!--&lt;!&ndash;                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
 
-<!--    </div>-->
-<!--</div>-->
-<!-- Internal Body  -->
-<!-- Details -->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash; Internal Body  &ndash;&gt;-->
+<!--&lt;!&ndash; Details &ndash;&gt;-->
+{% block user %}
 <div class="container-75 font-20">
     <p>Health Id- {{user.card_number}}</p>
     <p>PHR Address- {{user.phr_address}}</p>

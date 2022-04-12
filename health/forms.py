@@ -13,3 +13,7 @@ class uploadDocumentForm(forms.ModelForm):
     class Meta:
         model = UserDecease
         fields = "__all__"
+        exclude ={'user'}
+        widgets = {
+            'description': forms.Textarea(),
+        }

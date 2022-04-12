@@ -10,7 +10,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
-
+from django.contrib.auth.decorators import login_required
 from .forms import *
 
 
@@ -165,7 +165,7 @@ def emailGeneration(request):
         else:
             return HttpResponse('not send')
 
-
+@login_required(login_url='/')
 def user_login(request):
     user = request.user
     quote = random_quotes()
@@ -250,10 +250,10 @@ def upload_document(request):
     if request.method == "POST":
         my_form = uploadDocumentForm(request.POST)
         if my_form.is_valid():
-            my_form.save()
-            return render(request, 'upload_document.html',{'form': my_form})
-        else:
-            print(my_form.errors)
+            ins = my_form.save(commit=False)
+            ins.user = request.user
+            ins.save()
+            return render(request, 'upload_document.html', {'form': my_form})
     else:
         form = uploadDocumentForm()
         return render(request, 'upload_document.html', {'form': form})
