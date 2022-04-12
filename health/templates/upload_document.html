@@ -2,9 +2,9 @@
 {% block body %}
 <form action="/login/patient/upload_document/" method="post"> {% csrf_token %}
       <div class="form-box">
-          Decease Name : {{form.decease_name}}
-          Decease Description : {{form.description}}
+          Decease Name : {{form.decease_name|add_class:"form-input"}}
+          Decease Description : {{form.description|add_class:"form-input"}}
+            <input type="submit">
       </div>
-  <input type="submit">
 </form>
 {% endblock %}
