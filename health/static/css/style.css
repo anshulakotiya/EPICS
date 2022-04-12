@@ -206,7 +206,7 @@ span a {
 /* GAJENDRA CSS */
 .navbar {
     width: 98%;
-    margin : 0px;
+    margin : 0px auto 0px auto;
     position: relative;
     display: flex;
     flex-wrap: wrap;
