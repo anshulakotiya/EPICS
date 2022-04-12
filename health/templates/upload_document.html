@@ -1,7 +1,8 @@
 {% extends 'basic.html' %}
+{% load widget_tweaks %}
 {% block body %}
 <form action="/login/patient/upload_document/" method="post"> {% csrf_token %}
-      <div class="form-box">
+      <div class="form-box2">
           Decease Name : {{form.decease_name|add_class:"form-input"}}
           Decease Description : {{form.description|add_class:"form-input"}}
             <input type="submit">
