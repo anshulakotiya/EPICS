@@ -397,7 +397,13 @@ span a {
         width: 15%;
         cursor: pointer;
         float: right;
-    }
+}
+.black-background{
+    background-color:rgba(154,143,143,0.5);
+}
+.scroll{
+    overflow-y:scroll;
+}
 @media only screen and (max-width: 576px){
     .form-box {
         background-color: rgba(0, 0, 0, 0.4);

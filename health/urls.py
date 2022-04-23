@@ -32,6 +32,8 @@ urlpatterns = [
     path('login/patient/', views.user_login),
     path('login/patient/upload_document/', views.upload_document),
     path('login/patient/upload_document_2/<str:id>', views.upload_document_2),
+    path('login/patient/view_document/', views.view_document),
+    path('login/patient/view_document/<str:id>', views.view_document_2),
     path('forgot_password/', views.forgot_password),
     path('forgot_password_otp/', views.forgot_password_otp),
     path('doctors_verification/',views.doctors_verification),

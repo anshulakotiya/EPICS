@@ -76,12 +76,14 @@
     <p>Health Id- {{user.card_number}}</p>
     <p>PHR Address- {{user.phr_address}}</p>
 </div>
-<div class="container-75 h-50">
-    <div align="left" class="div-50 h-100">
-        <button class="btn btn-outline-primary vertical-center" type="button" onclick="window.location.href='upload_document/'">Upload Document</button>
-    </div>
-    <div class="div-50 h-100">
-        <button class="btn btn-outline-primary vertical-center" type="button">View Document</button>
+<div align="center" class="mt-5 w-100">
+    <div class="container-75 h-50 mt-2">
+        <div align="center" class="h-50 w-50-left black-background">
+            <button class="btn btn-outline-primary vertical-center mt-5" onclick="window.location.href='upload_document/'" type="button">Upload Document</button>
+        </div>
+        <div align="center" class="h-50 w-50-right black-background">
+            <button class="btn btn-outline-primary vertical-center mt-5" type="button" onclick="window.location.href='view_document/'">View Document</button>
+        </div>
     </div>
 </div>
 {% endblock %}

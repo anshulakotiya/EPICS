@@ -1,0 +1,27 @@
+{% extends 'user_basic.html' %}
+{% load widget_tweaks %}
+{% block user %}
+<div class="scroll mt-5">
+    <table align="center" border="1" cellpadding="10" cellspacing="0" width="80%">
+        <thead>
+        <tr>
+            <th>Disease Name</th>
+            <th>Description</th>
+            <th>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for d in all_disease %}
+        <tr>
+            <td>{{d.disease_name}}</td>
+            <td>{{d.description}}</td>
+            <td>
+                <button onclick="window.location.href='/login/patient/view_document/{{d.id}}'">View</button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

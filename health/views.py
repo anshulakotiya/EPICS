@@ -271,3 +271,12 @@ def upload_document_2(request, id):
     data = UserDisease.objects.get(id=id)
     all_files = Documents.objects.filter(userDis=id)
     return render(request, 'upload_document_2.html', {'data': data, 'id': id, 'all_files': all_files})
+
+
+def view_document(request):
+    all_disease = UserDisease.objects.filter(user=request.user)
+    return render(request, 'view_document.html', {'all_disease': all_disease})
+
+
+def view_document_2(request, id):
+    return render(request, 'view_document_2.html', {'id': id})
