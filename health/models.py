@@ -11,7 +11,7 @@ class User(AbstractUser):
     is_technical = models.BooleanField(default=False)
     username = models.EmailField(unique=True)
     name = models.CharField(max_length=256)
-    gender = models.CharField(max_length=24)
+    gender = models.CharField(max_length=16)
     phone_number = models.BigIntegerField(null=True)
     card_number = models.CharField(max_length=20, blank=True, null=True)
     phr_address = models.CharField(max_length=20, blank=True, null=True)
@@ -27,12 +27,12 @@ class doctorLicence(models.Model):
     licence_image = models.ImageField(upload_to='media/health_world/licence/', blank=False)
 
 
-class UserDecease(models.Model):
+class UserDisease(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    decease_name = models.CharField(max_length=64)
+    disease_name = models.CharField(max_length=64)
     description = models.CharField(max_length=2048)
 
 class Documents(models.Model):
-    userDoc = models.ForeignKey(UserDecease,on_delete=models.CASCADE)
-    file = models.FileField(upload_to='media/health_world/documents/', blank=False)
+    userDis = models.ForeignKey(UserDisease, on_delete=models.CASCADE)
+    file = models.ImageField(upload_to='media/health_world/documents/', blank=False)
 

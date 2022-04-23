@@ -11,7 +11,7 @@ class uploadDocumentForm2(forms.ModelForm):
 
 class uploadDocumentForm(forms.ModelForm):
     class Meta:
-        model = UserDecease
+        model = UserDisease
         fields = "__all__"
         exclude ={'user'}
         widgets = {

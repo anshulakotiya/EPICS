@@ -3,6 +3,7 @@ import random
 import easyocr
 from django.conf import settings
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.contrib.messages import error
 from django.core.exceptions import ObjectDoesNotExist
@@ -10,7 +11,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
-from django.contrib.auth.decorators import login_required
+
 from .forms import *
 
 
@@ -165,6 +166,7 @@ def emailGeneration(request):
         else:
             return HttpResponse('not send')
 
+
 @login_required(login_url='/')
 def user_login(request):
     user = request.user
@@ -188,6 +190,7 @@ def signup_doctor(request):
     return render(request, 'signup_doctor.html')
 
 
+@login_required()
 def logout(request):
     auth.logout(request)
     return redirect('/')
@@ -219,7 +222,7 @@ def signup_doctor_ajax(request):
     email = request.POST.get("email")
     try:
         users = User.objects.get(username=email)
-        return HttpResponse("already exist")
+        return HttpResponse(users + "already exist")
     except ObjectDoesNotExist:
         otp = password_generator()
         request.session['doctor_signup_otp'] = otp
@@ -253,7 +256,18 @@ def upload_document(request):
             ins = my_form.save(commit=False)
             ins.user = request.user
             ins.save()
-            return render(request, 'upload_document.html', {'form': my_form})
+            print(ins.id)
+            url = '/login/patient/upload_document_2/' + str(ins.id)
+            return redirect(url)
     else:
         form = uploadDocumentForm()
         return render(request, 'upload_document.html', {'form': form})
+
+
+def upload_document_2(request, id):
+    if request.method == "POST":
+        file = request.POST.get('file')
+        Documents(file=file, userDis=UserDisease.objects.get(id=id)).save()
+    data = UserDisease.objects.get(id=id)
+    all_files = Documents.objects.filter(userDis=id)
+    return render(request, 'upload_document_2.html', {'data': data, 'id': id, 'all_files': all_files})

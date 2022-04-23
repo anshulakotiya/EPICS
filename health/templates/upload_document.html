@@ -3,10 +3,13 @@
 {% block user %}
 <form action="/login/patient/upload_document/" method="post"> {% csrf_token %}
     <div class="form-box mt-3">
-        Decease Name : {{form.decease_name|add_class:"form-input"}}
-        Decease Description : {{form.description|add_class:"form-input h-25"}}
+        <span class="white font-20"><b>Disease Name : </b></span> {{form.disease_name|add_class:"form-input"}}
+        <span class="white font-20"><b>Disease Description : </b></span>{{form.description|add_class:"form-input h-25"}}
         <div align="center" class="mt-1">
             <input class="buttons" type="submit" value="Next">
+        </div>
+        <div class="white mt-3" align="center">
+            Page 1 of 2
         </div>
     </div>
 </form>

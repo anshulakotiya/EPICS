@@ -119,6 +119,9 @@
 }.yellow{
     color:yellow;
 }
+.blue{
+    color:#0d6efd;
+}
 @media only screen and (max-width: 576px){
     .font-20{
         font-size:18px;
