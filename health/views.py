@@ -317,23 +317,29 @@ def get_backup(request):
 def phr_address(request):
     if request.method == "POST":
         phr_add = request.POST.get('phr_address')
-        searched_user = User.objects.get(is_active=True, phr_address=phr_add, is_user=True)
-        user_disease = UserDisease.objects.filter(user=searched_user)
-        print(user_disease)
-        return render(request, 'search_  result.html', {'searched_user': searched_user, 'user_disease': user_disease})
+        try:
+            searched_user = User.objects.get(is_active=True, phr_address=phr_add, is_user=True)
+            user_disease = UserDisease.objects.filter(user=searched_user)
+            return render(request, 'search_result.html', {'searched_user': searched_user, 'user_disease': user_disease})
+        except ObjectDoesNotExist:
+            error(request, "Please enter the correct details")
+            return redirect('/login/doctor/')
 
 
 @login_required(login_url='/')
 def health_id(request):
     if request.method == "POST":
         health_id_no = request.POST.get('health_id')
-        searched_user = User.objects.get(is_active=True, card_number=health_id_no, is_user=True)
-        user_disease = UserDisease.objects.filter(user=searched_user)
-        print(user_disease)
-        return render(request, 'search_result.html', {'searched_user': searched_user, 'user_disease': user_disease})
+        try:
+            searched_user = User.objects.get(is_active=True, card_number=health_id_no, is_user=True)
+            user_disease = UserDisease.objects.filter(user=searched_user)
+            return render(request, 'search_result.html', {'searched_user': searched_user, 'user_disease': user_disease})
+        except ObjectDoesNotExist:
+            error(request, "Please enter the correct details")
+            return redirect('/login/doctor/')
 
 
-def doctors_verification_completed(requets, id):
+def doctors_verification_completed(request, id):
     print(User.objects.get(id=id))
     my_user = User.objects.get(id=id)
     my_user.is_active = True
