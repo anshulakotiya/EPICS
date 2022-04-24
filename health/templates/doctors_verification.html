@@ -7,7 +7,7 @@
     </ul>
     <div class="dropdown">
         <button class="navbar-button dropbtn">
-            <img class="navbar-img" src="{% static 'images/logo 1-modified.jpeg' %}">
+            <img class="navbar-img" src="{% static 'icons/icon-192x192.png' %}">
         </button>
         <div class="dropdown-content">
             <a href="#">Change Password</a>
@@ -32,7 +32,7 @@
             <td>
                 <img src="{{a.licence_image.url}}"  class="licence-image"></td>
             <td>{{a.licence_no}}</td>
-            <td><button onclick="window.location.href=''">Verify</button></td>
+            <td><button onclick="window.location.href='/doctors_verification/{{a.user_id.id}}'">Verify</button></td>
         </tr>
         {% endfor %}
     </table>

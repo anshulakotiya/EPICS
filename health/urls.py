@@ -33,6 +33,7 @@ urlpatterns = [
     path('forgot_password/', views.forgot_password),
     path('forgot_password_otp/', views.forgot_password_otp),
     path('doctors_verification/', views.doctors_verification),
+    path('doctors_verification/<str:id>', views.doctors_verification_completed),
     # user
     path('login/patient/', views.user_login),
     path('login/patient/upload_document/', views.upload_document),

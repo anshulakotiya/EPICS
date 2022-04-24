@@ -332,3 +332,10 @@ def health_id(request):
         print(user_disease)
         return render(request, 'search_result.html', {'searched_user': searched_user, 'user_disease': user_disease})
 
+
+def doctors_verification_completed(requets, id):
+    print(User.objects.get(id=id))
+    my_user = User.objects.get(id=id)
+    my_user.is_active = True
+    my_user.save()
+    return redirect(doctors_verification)
