@@ -3,7 +3,7 @@
   "short_name" : "Health World",
   "background_color": "#2196f3",
   "theme_color" : "#2196f3",
-  "display": "standalone",
+  "display": "fullscreen",
   "start_url": "/",
   "icons": [
         {

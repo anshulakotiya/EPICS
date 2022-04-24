@@ -1,8 +1,107 @@
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-      design this page as after successfully login of doctor
-</body>
-</html>
+{% extends 'basic.html' %}
+{% load static%}
+{% block title %}Doctor{% endblock %}
+{% block body %}
+<nav class="navbar">
+    <ul class="navbar-brand">
+        <li>Welcome , {{user.name|title}}</li>
+    </ul>
+    <div class="dropdown">
+        <button class="navbar-button dropbtn">
+            <img class="navbar-img" src="{% static 'images/logo 1-modified.jpeg' %}">
+        </button>
+        <div class="dropdown-content">
+            <a href="#">Change Password</a>
+            <a href="#">Profile</a>
+            <a href="/logout/">Logout</a>
+        </div>
+    </div>
+    <!--        <div class="mx-5,navbar-nav ms-auto mb-2 mb-lg-0">-->
+    <!--            <button class="btn" data-toggle="modal" data-target="#myModal">Change Passward</button>-->
+    <!--            <button class="btn" data-toggle="modal" data-target="#profileModal">Profile</button>-->
+    <!--        </div>-->
+    <!--    <div>-->
+    <!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
+    <!--                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--            <span class="navbar-toggler-icon"></span>-->
+    <!--        </button>-->
+    <!--    </div>-->
+</nav>
+<!-- Change passward -->
+<!-- Modal -->
+<!--<div id="myModal" class="modal fade" role="dialog">-->
+<!--    <div class="modal-dialog">-->
+<!--        &lt;!&ndash; Modal content&ndash;&gt;-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--                <h4 class="modal-title">Modal Header</h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <p>MOdal for change passward</p>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; Profile &ndash;&gt;-->
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div id="profileModal" class="modal fade" role="dialog">-->
+<!--    <div class="modal-dialog">-->
+
+<!--        &lt;!&ndash; Modal content&ndash;&gt;-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--                <h4 class="modal-title">Modal Header</h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <p>modal foe profile</p>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+<!-- Internal Body  -->
+<!-- Details -->
+<div class="container-75 font-20">
+    <p>Name- {{user.name|title}}</p>
+    <p>Contact Number - {{user.phone_number}}</p>
+</div>
+<div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        {% if message.tags == "error" %}
+        <li class="red font-20" style="list-style:none;"><b>{{ message }}</b></li>
+        {% elif message.tags == "success" %}
+        <li class="green font-20" style="list-style:none;"><b>{{ message }}</b></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+<div align="center" class="mt-5 w-100">
+    <div class="container-75 h-50 mt-2">
+        <div align="center" class="h-50 w-50-left black-background">
+            <div class="font-20 mt-2">Search By PHR Address</div>
+            <form action="/login/doctor/phr_address/" method="post">{% csrf_token %}
+                <input class="form-input-60" type="text" placeholder="PHR Address" name="phr_address" required><br>
+                <input class="btn btn-outline-primary vertical-center mt-1" type="submit" value="Search">
+            </form>
+        </div>
+        <div align="center" class="h-50 w-50-right black-background">
+            <div class="font-20 mt-2">Search By Health ID Number</div>
+            <form action="/login/doctor/health_id/" method="post">{% csrf_token %}
+                <input type="text" class="form-input-60" placeholder="Health ID Number" name="health_id" required><br>
+                <input class="btn btn-outline-primary vertical-center mt-1" type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

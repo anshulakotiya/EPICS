@@ -5,9 +5,10 @@ from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
-from django.contrib.messages import error
+from django.contrib.messages import error, success
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
+from django.core.management import call_command
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
@@ -52,37 +53,6 @@ def random_quotes():
                    "Don't decrease the goals instead increase your efforts.", "Every human being is the author of his own health.",
                    "We cannot become what we want by remaining what we are!!"]
     return random.choice(quotes_list)
-
-
-def home(request):
-    if request.session.has_key('logged_in_as_user'):
-        return redirect('/login/patient/')
-    elif request.session.has_key('logged_in_as_doctor'):
-        return render(request, 'doctor.html')
-    elif request.session.has_key('logged_in_as_technical'):
-        return render(request, 'technical.html')
-    if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_user:
-                auth.login(request, user)
-                request.session['logged_in_as_user'] = True
-                return redirect('/login/patient/')
-            elif user.is_doctor:
-                auth.login(request, user)
-                request.session['logged_in_as_doctor'] = True
-                return render(request, 'doctor.html')
-            elif user.is_technical:
-                auth.login(request, user)
-                request.session['logged_in_as_technical'] = True
-                return render(request, 'technical.html')
-        else:
-            error(request, 'invalid credentials')
-    captcha = password_generator()
-    request.session['captcha'] = captcha
-    return render(request, "home.html", {'captcha': captcha})
 
 
 def refreshCaptcha(request):
@@ -167,6 +137,47 @@ def emailGeneration(request):
             return HttpResponse('not send')
 
 
+def home(request):
+    if request.session.has_key('logged_in_as_user'):
+        return redirect('/login/patient/')
+    elif request.session.has_key('logged_in_as_doctor'):
+        return redirect('/login/doctor/')
+    elif request.session.has_key('logged_in_as_technical'):
+        return redirect('/login/technical/')
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_user:
+                auth.login(request, user)
+                request.session['logged_in_as_user'] = True
+                return redirect('/login/patient/')
+            elif user.is_doctor:
+                auth.login(request, user)
+                request.session['logged_in_as_doctor'] = True
+                return redirect('/login/doctor/')
+            elif user.is_technical:
+                auth.login(request, user)
+                request.session['logged_in_as_technical'] = True
+                return redirect('/login/technical/')
+        else:
+            error(request, 'invalid credentials')
+    captcha = password_generator()
+    request.session['captcha'] = captcha
+    return render(request, "home.html", {'captcha': captcha})
+
+
+@login_required(login_url='/')
+def technical(request):
+    return render(request, 'technical.html')
+
+
+@login_required(login_url='/')
+def doctor(request):
+    return render(request, 'doctor.html')
+
+
 @login_required(login_url='/')
 def user_login(request):
     user = request.user
@@ -190,7 +201,7 @@ def signup_doctor(request):
     return render(request, 'signup_doctor.html')
 
 
-@login_required()
+@login_required(login_url='/')
 def logout(request):
     auth.logout(request)
     return redirect('/')
@@ -249,6 +260,7 @@ def doctors_verification(request):
     return render(request, 'doctors_verification.html', {'doctor_to_verify': doctor_to_verify})
 
 
+@login_required(login_url='/')
 def upload_document(request):
     if request.method == "POST":
         my_form = uploadDocumentForm(request.POST)
@@ -264,6 +276,7 @@ def upload_document(request):
         return render(request, 'upload_document.html', {'form': form})
 
 
+@login_required(login_url='/')
 def upload_document_2(request, id):
     if request.method == "POST":
         report = request.POST.get('report')
@@ -275,11 +288,13 @@ def upload_document_2(request, id):
     return render(request, 'upload_document_2.html', {'data': data, 'id': id})
 
 
+@login_required(login_url='/')
 def view_document(request):
     all_disease = UserDisease.objects.filter(user=request.user)
     return render(request, 'view_document.html', {'all_disease': all_disease})
 
 
+@login_required(login_url='/')
 def view_document_2(request, id):
     disease = UserDisease.objects.get(id=id)
     print(disease)
@@ -288,6 +303,32 @@ def view_document_2(request, id):
     return render(request, 'view_document_2.html', {'id': id, 'disease': disease, 'all_reports': all_reports})
 
 
+@login_required(login_url='/')
 def get_backup(request):
+    try:
+        call_command('dbbackup')
+        success(request, "Backup Completed!")
+    except:
+        error(request, "Backup Not Completed")
+    return redirect('/login/technical/')
 
-    return HttpResponse("Backup Completed")
+
+@login_required(login_url='/')
+def phr_address(request):
+    if request.method == "POST":
+        phr_add = request.POST.get('phr_address')
+        searched_user = User.objects.get(is_active=True, phr_address=phr_add, is_user=True)
+        user_disease = UserDisease.objects.filter(user=searched_user)
+        print(user_disease)
+        return render(request, 'search_result.html', {'searched_user': searched_user, 'user_disease': user_disease})
+
+
+@login_required(login_url='/')
+def health_id(request):
+    if request.method == "POST":
+        health_id_no = request.POST.get('health_id')
+        searched_user = User.objects.get(is_active=True, card_number=health_id_no, is_user=True)
+        user_disease = UserDisease.objects.filter(user=searched_user)
+        print(user_disease)
+        return render(request, 'search_result.html', {'searched_user': searched_user, 'user_disease': user_disease})
+

@@ -1,0 +1,12 @@
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+    {{searched_user.name|title}}
+    {{searched_user.gender|title}}
+{% for d in user_disease %}
+    {{d.disease_name}}
+{% endfor %}
+</body>
+</html>

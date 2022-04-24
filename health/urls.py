@@ -21,6 +21,7 @@ from health_world import settings
 
 urlpatterns = [
     path('', views.home),
+    path('login/', views.home),
     path('refreshCaptcha/', views.refreshCaptcha),
     path('signup/', views.signup),
     path('signup_doctor/', views.signup_doctor),
@@ -29,15 +30,23 @@ urlpatterns = [
     path('emailGeneration/', views.emailGeneration),
     path('emailValidation/', views.emailValidation),
     path('doctorEmailValidation/', views.doctorEmailValidation),
+    path('forgot_password/', views.forgot_password),
+    path('forgot_password_otp/', views.forgot_password_otp),
+    path('doctors_verification/', views.doctors_verification),
+    # user
     path('login/patient/', views.user_login),
     path('login/patient/upload_document/', views.upload_document),
     path('login/patient/upload_document_2/<str:id>', views.upload_document_2),
     path('login/patient/view_document/', views.view_document),
     path('login/patient/view_document/<str:id>', views.view_document_2),
+    # tech
+    path('login/technical/', views.technical),
     path('login/technical/backup/', views.get_backup),
-    path('forgot_password/', views.forgot_password),
-    path('forgot_password_otp/', views.forgot_password_otp),
-    path('doctors_verification/',views.doctors_verification),
+    # doctor
+    path('login/doctor/', views.doctor),
+    path('login/doctor/phr_address/', views.phr_address),
+    path('login/doctor/health_id/', views.doctor),
+
     path('logout/', views.logout),
 ]
 if settings.DEBUG:

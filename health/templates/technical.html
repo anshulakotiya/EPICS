@@ -1,6 +1,6 @@
 {% extends 'basic.html' %}
 {% load static%}
-{% block title %}Patient after login{% endblock %}
+{% block title %}Technical Team{% endblock %}
 {% block body %}
 <nav class="navbar">
     <ul class="navbar-brand">
@@ -73,12 +73,27 @@
     <p>Name- {{user.name|title}}</p>
     <p>Contact Number - {{user.phone_number}}</p>
 </div>
-<div class="container-75 h-50">
-    <div align="left" class="div-50 h-100">
-        <button class="btn btn-outline-primary vertical-center" type="button" onclick="window.location.href='/doctors_verification/'">Doctor's Permission</button>
-    </div>
-    <div class="div-50 h-100">
-        <button class="btn btn-outline-primary vertical-center" type="button" onclick="window.location.href='/login/technical/backup/'">Get Backup</button>
+<div>
+    {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                {% if message.tags == "error" %}
+                    <li class="red font-20" style="list-style:none;"><b>{{ message }}</b></li>
+                {% elif message.tags == "success" %}
+                    <li class="green font-20" style="list-style:none;"><b>{{ message }}</b></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+    {% endif %}
+</div>
+<div align="center" class="mt-5 w-100">
+    <div class="container-75 h-50 mt-2">
+        <div align="center" class="h-50 w-50-left black-background">
+            <button class="btn btn-outline-primary vertical-center mt-5" onclick="window.location.href='/doctors_verification/'" type="button">Doctor's Permission</button>
+        </div>
+        <div align="center" class="h-50 w-50-right black-background">
+            <button class="btn btn-outline-primary vertical-center mt-5" type="button" onclick="window.location.href='/login/technical/backup/'">Get Backup</button>
+        </div>
     </div>
 </div>
 {% endblock %}
