@@ -320,7 +320,7 @@ def phr_address(request):
         searched_user = User.objects.get(is_active=True, phr_address=phr_add, is_user=True)
         user_disease = UserDisease.objects.filter(user=searched_user)
         print(user_disease)
-        return render(request, 'search_result.html', {'searched_user': searched_user, 'user_disease': user_disease})
+        return render(request, 'search_  result.html', {'searched_user': searched_user, 'user_disease': user_disease})
 
 
 @login_required(login_url='/')

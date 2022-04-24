@@ -210,3 +210,20 @@ function doctorEmailValidate(){
             }
     })
 }
+
+function formateHealthId(){
+    healthId = document.getElementById('healthIdNo');
+    let len = healthId.value.length;
+    if( len == 2){
+        healthId.value = healthId.value.substring(0,2)+'-';
+        }
+    else if(len == 7){
+        healthId.value = healthId.value.substring(0,7)+'-';
+        }
+    else if(len == 12){
+        healthId.value = healthId.value.substring(0,12)+'-';
+        }
+    else if(len == 17 ||len >17){
+            healthId.value = healthId.value.substring(0,17);
+        }
+}

@@ -45,7 +45,7 @@ urlpatterns = [
     # doctor
     path('login/doctor/', views.doctor),
     path('login/doctor/phr_address/', views.phr_address),
-    path('login/doctor/health_id/', views.doctor),
+    path('login/doctor/health_id/', views.health_id),
 
     path('logout/', views.logout),
 ]

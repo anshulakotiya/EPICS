@@ -8,7 +8,7 @@
     </ul>
     <div class="dropdown">
         <button class="navbar-button dropbtn">
-            <img class="navbar-img" src="{% static 'images/logo 1-modified.jpeg' %}">
+            <img class="navbar-img" src="{% static 'icons/icon-192x192.png' %}">
         </button>
         <div class="dropdown-content">
             <a href="#">Change Password</a>
@@ -98,7 +98,7 @@
         <div align="center" class="h-50 w-50-right black-background">
             <div class="font-20 mt-2">Search By Health ID Number</div>
             <form action="/login/doctor/health_id/" method="post">{% csrf_token %}
-                <input type="text" class="form-input-60" placeholder="Health ID Number" name="health_id" required><br>
+                <input type="text" class="form-input-60" placeholder="Health ID Number" name="health_id" id="healthIdNo" required oninput="formateHealthId()"><br>
                 <input class="btn btn-outline-primary vertical-center mt-1" type="submit" value="Search">
             </form>
         </div>

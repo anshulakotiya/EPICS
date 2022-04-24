@@ -81,17 +81,17 @@ WSGI_APPLICATION = 'health_world.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2',
-                'NAME': 'postgresql-triangular-91974',
-                'USER': 'yjevpzdzquvhcg',
-                'PASSWORD': '35e9acba66e3b5e68e418ddcff3cf53f0d89611701ad7ab01c0dc9a8c92b4616',
-                'HOST': 'ec2-44-199-143-43.compute-1.amazonaws.com',
-                'PORT': '5432',
-                }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+    # 'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #             'NAME': 'postgresql-triangular-91974',
+    #             'USER': 'yjevpzdzquvhcg',
+    #             'PASSWORD': '35e9acba66e3b5e68e418ddcff3cf53f0d89611701ad7ab01c0dc9a8c92b4616',
+    #             'HOST': 'ec2-44-199-143-43.compute-1.amazonaws.com',
+    #             'PORT': '5432',
+    #             }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 # Password validation
