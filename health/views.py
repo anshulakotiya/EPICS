@@ -266,11 +266,13 @@ def upload_document(request):
 
 def upload_document_2(request, id):
     if request.method == "POST":
-        file = request.POST.get('file')
-        Documents(file=file, userDis=UserDisease.objects.get(id=id)).save()
+        report = request.POST.get('report')
+        report_date = request.POST.get('date')
+        text = request.POST.get('text')
+        Documents(file=report, userDis=UserDisease.objects.get(id=id), date=report_date, text=text).save()
     data = UserDisease.objects.get(id=id)
-    all_files = Documents.objects.filter(userDis=id)
-    return render(request, 'upload_document_2.html', {'data': data, 'id': id, 'all_files': all_files})
+    # all_files = Documents.objects.filter(userDis=id)
+    return render(request, 'upload_document_2.html', {'data': data, 'id': id})
 
 
 def view_document(request):
@@ -279,4 +281,13 @@ def view_document(request):
 
 
 def view_document_2(request, id):
-    return render(request, 'view_document_2.html', {'id': id})
+    disease = UserDisease.objects.get(id=id)
+    print(disease)
+    all_reports = Documents.objects.filter(userDis=disease)
+    print(all_reports)
+    return render(request, 'view_document_2.html', {'id': id, 'disease': disease, 'all_reports': all_reports})
+
+
+def get_backup(request):
+
+    return HttpResponse("Backup Completed")

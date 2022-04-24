@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class User(AbstractUser):
@@ -30,9 +30,11 @@ class doctorLicence(models.Model):
 class UserDisease(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     disease_name = models.CharField(max_length=64)
-    description = models.CharField(max_length=2048)
+    description = models.TextField()
 
 class Documents(models.Model):
     userDis = models.ForeignKey(UserDisease, on_delete=models.CASCADE)
-    file = models.ImageField(upload_to='media/health_world/documents/', blank=False)
+    date = models.DateField()
+    text = models.TextField(blank=True,null=True)
+    file = models.FileField(upload_to='media/health_world/documents/', blank=False,null=True)
 

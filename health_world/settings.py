@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'cloudinary_storage',
     'cloudinary',
+    'dbbackup',
 ]
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR/'backup'}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

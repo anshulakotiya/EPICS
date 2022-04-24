@@ -7,8 +7,7 @@
         <tr>
             <th>Disease Name</th>
             <th>Description</th>
-            <th>
-            </th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -17,7 +16,7 @@
             <td>{{d.disease_name}}</td>
             <td>{{d.description}}</td>
             <td>
-                <button onclick="window.location.href='/login/patient/view_document/{{d.id}}'">View</button>
+                <button class="btn btn-outline-primary" onclick="window.location.href='/login/patient/view_document/{{d.id}}'">View</button>
             </td>
         </tr>
         {% endfor %}

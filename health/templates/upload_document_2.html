@@ -1,15 +1,17 @@
 {% extends 'user_basic.html' %}
 {% load widget_tweaks %}
 {% block user %}
-<form action="/login/patient/upload_document_2/{{id}}" method="post"> {% csrf_token %}
+<form action="/login/patient/upload_document_2/{{id}}" method="post" > {% csrf_token %}
     <div class="form-box mt-3">
         <h1 align="center" class="white">Report Uploads</h1>
         <span class="white font-20">Disease Name : {{data.disease_name}}<br>
             {{data.description}}</span><br>
-        {% for f in all_files %}
-            {{f.file.url}}<br>
-        {% endfor %}
-        <input class="form-input" name="file" required type="file">
+<!--        {% for f in all_files %}-->
+<!--            {{f.file.url}}<br>-->
+<!--        {% endfor %}-->
+        <input class="form-input" name="date" required type="date">
+        <input class="form-input" type="file" name="report" required >
+        <textarea class="form-input" name="text" required></textarea>
         <div align="center" class="mt-1">
             <input class="buttons" type="submit" value="Next">
         </div>

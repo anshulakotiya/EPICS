@@ -1,0 +1,28 @@
+{% extends 'user_basic.html' %}
+{% load widget_tweaks %}
+{% block user %}
+<div class="scroll mt-5">
+    <table align="center" border="1" cellpadding="10" cellspacing="0" width="80%">
+        <thead>
+        <tr>
+            <th colspan="3">
+                Disease Name : {{disease.disease_name|title}}
+                <br>
+                {{disease.description}}
+            </th>
+        </tr>
+        <tr>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for r in all_reports %}
+        <tr>
+            <td>{{r.date}}</td>
+            <td><img src="{{r.file.url}}" class="licence-image" ></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
