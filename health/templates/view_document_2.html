@@ -21,7 +21,7 @@
         {% for r in all_reports %}
         <tr>
             <td>{{r.date}}</td>
-            <td>{{r.file}}<img src="{{r.file.url}}" class="licence-image" ></td>
+            <td><img src="{{r.file.url}}" class="licence-image" ></td>
             <td>{{r.text}}</td>
         </tr>
         {% endfor %}
