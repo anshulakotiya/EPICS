@@ -8,6 +8,7 @@
             <th>Disease Name</th>
             <th>Description</th>
             <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -15,8 +16,12 @@
         <tr>
             <td>{{d.disease_name}}</td>
             <td>{{d.description}}</td>
-            <td>
+            <td width="10%" align="center">
                 <button class="btn btn-outline-primary" onclick="window.location.href='/login/patient/view_document/{{d.id}}'">View</button>
+            </td>
+            <td width="15%" align="center">
+                <button class="btn btn-outline-primary" onclick="window.location.href='/login/patient/edit_document/{{d.id}}'">Edit</button>
+                <button class="btn btn-outline-primary" onclick="window.location.href='/login/patient/delete_document/{{d.id}}'">Delete</button>
             </td>
         </tr>
         {% endfor %}

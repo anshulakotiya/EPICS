@@ -9,7 +9,7 @@ from django.contrib.messages import error, success
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 from django.core.management import call_command
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render, redirect
 from django.template import loader
 
@@ -345,3 +345,22 @@ def doctors_verification_completed(request, id):
     my_user.is_active = True
     my_user.save()
     return redirect(doctors_verification)
+
+
+@login_required(login_url='/')
+def edit_document(request, id):
+    raise Http404("Page under development")
+
+
+@login_required(login_url='/')
+def delete_document(request, id):
+    raise Http404("Page under development")
+
+
+@login_required(login_url='/')
+def view_user_document(request, id):
+    disease = UserDisease.objects.get(id=id)
+    print(disease)
+    all_reports = Documents.objects.filter(userDis=disease)
+    print(all_reports)
+    return render(request, 'view_document_2.html', {'id': id, 'disease': disease, 'all_reports': all_reports})

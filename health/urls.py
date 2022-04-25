@@ -40,6 +40,8 @@ urlpatterns = [
     path('login/patient/upload_document_2/<str:id>', views.upload_document_2),
     path('login/patient/view_document/', views.view_document),
     path('login/patient/view_document/<str:id>', views.view_document_2),
+    path('login/patient/edit_document/<str:id>', views.edit_document),
+    path('login/patient/delete_document/<str:id>', views.delete_document),
     # tech
     path('login/technical/', views.technical),
     path('login/technical/backup/', views.get_backup),
@@ -47,6 +49,7 @@ urlpatterns = [
     path('login/doctor/', views.doctor),
     path('login/doctor/phr_address/', views.phr_address),
     path('login/doctor/health_id/', views.health_id),
+    path('login/doctor/view_user_document/<str:id>', views.view_user_document),
 
     path('logout/', views.logout),
 ]

@@ -13,6 +13,8 @@
         </tr>
         <tr>
             <th>Date</th>
+            <th>Reports</th>
+            <th>Comment</th>
         </tr>
         </thead>
         <tbody>
@@ -20,6 +22,7 @@
         <tr>
             <td>{{r.date}}</td>
             <td><img src="{{r.file.url}}" class="licence-image" ></td>
+            <td>{{r.text}}</td>
         </tr>
         {% endfor %}
         </tbody>
