@@ -233,7 +233,8 @@ def signup_doctor_ajax(request):
     email = request.POST.get("email")
     try:
         users = User.objects.get(username=email)
-        return HttpResponse(users + "already exist")
+        print(users)
+        return HttpResponse("already exist")
     except ObjectDoesNotExist:
         otp = password_generator()
         request.session['doctor_signup_otp'] = otp
@@ -279,9 +280,9 @@ def upload_document(request):
 @login_required(login_url='/')
 def upload_document_2(request, id):
     if request.method == "POST":
-        report = request.POST.get('report')
         report_date = request.POST.get('date')
         text = request.POST.get('text')
+        report = request.FILES['report']
         Documents(file=report, userDis=UserDisease.objects.get(id=id), date=report_date, text=text).save()
     data = UserDisease.objects.get(id=id)
     # all_files = Documents.objects.filter(userDis=id)

@@ -35,6 +35,6 @@ class UserDisease(models.Model):
 class Documents(models.Model):
     userDis = models.ForeignKey(UserDisease, on_delete=models.CASCADE)
     date = models.DateField()
-    text = models.TextField(blank=True,null=True)
-    file = models.FileField(upload_to='media/health_world/documents/', blank=False,null=True)
+    text = models.TextField(blank=True, null=True)
+    file = models.ImageField(upload_to='media/health_world/documents/', blank=True)
 
